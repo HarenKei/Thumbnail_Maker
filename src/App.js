@@ -3,6 +3,7 @@ import './App.css';
 
 const Thumbnail = () =>{
   const [image, setImage] = useState(null)
+  const canvas = useRef(null)
   
   useEffect(()=>{
     const bgImage = new Image();
@@ -17,8 +18,8 @@ return (
     <h1>STARGAZER blog Thumbnail Maker!</h1>
 
     <div>
-      <canvas>
-        
+      <canvas ref={ canvas } width="800px" height="500px">
+
       </canvas>
     </div>
   </div>
