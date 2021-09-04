@@ -1,13 +1,22 @@
-import logo from './logo.svg';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div>
-      
-    </div>
-    
-  )
+const Thumbnail = () =>{
+  const [image, setImage] = useState(null)
+  
+  useEffect(()=>{
+    const bgImage = new Image();
+    bgImage.src = 
+    bgImage.onload = () => setImage(bgImage)
+  }, [])
+
+
+
+return (
+  <div>
+    <h1>STARGAZER blog Thumbnail Maker!</h1>
+  </div>
+)
 }
 
-export default App;
+export default Thumbnail;
