@@ -15,6 +15,12 @@ const Thumbnail = () =>{
 return (
   <div>
     <h1>STARGAZER blog Thumbnail Maker!</h1>
+
+    <div>
+      <canvas>
+        
+      </canvas>
+    </div>
   </div>
 )
 }
