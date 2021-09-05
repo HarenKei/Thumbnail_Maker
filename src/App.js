@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { SketchPicker, BlockPicker } from 'react-color';
 
 import './App.css';
 
 const Thumbnail = () =>{
+  const [textColor, setTextColor] = useState(null)
   const canvas = useRef(null)
   const [thumbText, setThumbText] = useState('')
 
@@ -12,12 +14,18 @@ const Thumbnail = () =>{
       ctx.fillRect(0, 0, 960, 540)
 
       ctx.font = "50px Comic Sans MS"
-      ctx.fillStyle = "white"
+      ctx.fillStyle = { textColor }
       ctx.fillText(thumbText, (800/2), (500/2))
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
 
   }, [canvas, thumbText])
+
+
+  const fikColor = (textColor) =>{
+    setTextColor({ textColor : textColor.hex })
+
+  }
 
 return (
   <div>
@@ -34,6 +42,9 @@ return (
    
     <div>
       썸네일 텍스트 : <input type="text" value={ thumbText } onChange = {e=> setThumbText(e.target.value)} />
+      <div>
+        <BlockPicker color={textColor} onChange={fikColor} />
+      </div>
       
     </div>
   </div>
