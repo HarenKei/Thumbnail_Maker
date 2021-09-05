@@ -11,7 +11,7 @@ const Thumbnail = () =>{
       ctx.fillStyle="#327da8"
       ctx.fillRect(0, 0, 960, 540)
 
-      ctx.font = "20px Comic Sans MS"
+      ctx.font = "50px Comic Sans MS"
       ctx.fillStyle = "white"
       ctx.fillText(thumbText, (800/2), (500/2))
       ctx.textBaseline = "middle"
@@ -26,8 +26,8 @@ return (
     <div>
       <canvas 
         ref={ canvas } 
-        width="800px" 
-        height="500px" 
+        width="800px"
+        height="500px"
       /> 
     
     </div>
