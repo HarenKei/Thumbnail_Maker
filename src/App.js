@@ -11,7 +11,7 @@ const Thumbnail = () =>{
 
   useEffect(() => {
       const ctx = canvas.current.getContext("2d")
-      ctx.fillStyle= {color}
+      ctx.fillStyle= color
       ctx.fillRect(0, 0, 960, 540)
 
       ctx.font = "50px Comic Sans MS"
@@ -43,7 +43,7 @@ return (
       </button>
       {showButton && (<BlockPicker
                         color={color}
-                        onChange={color => setColor(color.hex)}/>
+                        onChangeComplete={(color) => setColor(color.hex)}/>
                       )
       }
 
