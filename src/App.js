@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFill } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 
@@ -39,7 +41,8 @@ return (
 
     <div>
       <button onClick={()=>setShowButton(showButton=>!showButton)}>
-        {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
+        <FontAwesomeIcon icon={faFill} color="blue" size="lg"/>
+        {/*{showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}*/}
       </button>
       {showButton && (<BlockPicker
                         color={color}
