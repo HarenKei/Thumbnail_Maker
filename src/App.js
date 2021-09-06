@@ -14,7 +14,7 @@ const Thumbnail = () =>{
       ctx.fillStyle= color
       ctx.fillRect(0, 0, 960, 540)
 
-      ctx.font = "50px Comic Sans MS"
+      ctx.font = "60px Noto Sans CJK KR"
       ctx.fillStyle = "white"
       ctx.fillText(thumbText, (800/2), (500/2))
       ctx.textBaseline = "middle"
