@@ -74,3 +74,9 @@
   url("styles/fonts/NotoSansKR-Bold.otf") format('truetype')
 }
 
+button{
+  margin-left:60px;
+  margin-bottom:20px;
+  box-shadow: 0 0 5px grey;
+  width:50px;
+}
