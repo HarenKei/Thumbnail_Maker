@@ -41,7 +41,7 @@ return (
 
     <div>
       <button onClick={()=>setShowButton(showButton=>!showButton)}>
-        <FontAwesomeIcon icon={faFill} color="blue" size="lg"/>
+        <FontAwesomeIcon icon={faFill} color={color} size="lg"/>
         {/*{showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}*/}
       </button>
       {showButton && (<BlockPicker
@@ -53,12 +53,12 @@ return (
     </div>
    
     <div>
-      썸네일 텍스트 : 
       <input type="text" 
         value={ thumbText } 
         onChange = {e=> setThumbText(e.target.value)} 
       />
-
+      <br/>
+      썸네일 텍스트
       
       
     </div>
