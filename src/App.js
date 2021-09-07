@@ -3,6 +3,7 @@ import { SketchPicker, BlockPicker } from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFill } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { DefConLogo } from './images/Defcon_logo_use.svg';
 
 import './App.css';
 
@@ -68,6 +69,9 @@ return (
         <h2>footer</h2>
         <a href="https://github.com/HarenKei">
         <FontAwesomeIcon icon={faGithub} color = "grey" size="lg"/>
+        </a>
+        <a href="https://defcon.or.kr">
+          <img src={DefConLogo}/>
         </a>
     </div>
   </div>
