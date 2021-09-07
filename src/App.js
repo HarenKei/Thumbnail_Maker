@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFill } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import './App.css';
 
@@ -61,6 +62,13 @@ return (
       썸네일 텍스트
       
       
+    </div>
+
+    <div>
+        <h2>footer</h2>
+        <a href="https://github.com/HarenKei">
+        <FontAwesomeIcon icon={faGithub} color = "grey" size="lg"/>
+        </a>
     </div>
   </div>
 )
