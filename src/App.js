@@ -7,7 +7,7 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Thumbnail = () =>{
-  const [color, setColor] = useState('#fff')
+  const [color, setColor] = useState('grey')
   const [showButton, setShowButton] = useState(false)
   const canvas = useRef(null)
   const [thumbText, setThumbText] = useState('')
@@ -58,7 +58,7 @@ return (
     </div>
    
     <div id="divTextInput">
-      썸네일 텍스트 : 
+      썸네일 텍스트 
       <input type="text" 
         value={ thumbText } 
         onChange = {e=> setThumbText(e.target.value)} 
