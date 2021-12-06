@@ -31,9 +31,12 @@ return (
   <div>
     <div id="divHeader">
         <h1>STARGAZER blog Thumbnail Maker</h1>
-        <a href="https://heibondk.tistory.com"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
+
+        <div id="divGithubLink">
+            <a href="https://heibondk.tistory.com"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
+        </div>
     </div>
-    <div>
+    <div id="divCanvas">
       <canvas 
         ref={ canvas } 
         width="800px"
@@ -42,7 +45,7 @@ return (
     
     </div>
 
-    <div>
+    <div id="divColorpicker">
       <button onClick={()=>setShowButton(showButton=>!showButton)}>
         {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
       </button>
@@ -54,7 +57,7 @@ return (
 
     </div>
    
-    <div>
+    <div id="divTextInput">
       썸네일 텍스트 : 
       <input type="text" 
         value={ thumbText } 
