@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
+import { fab, faGithub, faInstagram, faFacebook, faTwitter, faGooglePlay, faGit } from "@fortawesome/free-brands-svg-icons";
 
 
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Thumbnail = () =>{
   const [color, setColor] = useState('#fff')
@@ -29,6 +31,7 @@ return (
   <div>
     <div id="divHeader">
         <h1>STARGAZER blog Thumbnail Maker</h1>
+        <a href="https://heibondk.tistory.com"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
     </div>
     <div>
       <canvas 
