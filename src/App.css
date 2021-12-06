@@ -10,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   justify-content:end;
+  margin-left:20px;
 }
 
 #divCanvas{
@@ -26,7 +27,7 @@
   flex-flow:nowrap column;
   justify-content: center;
   align-items: center;
-  padding-top:20px;
+  margin-top:10px;
 }
 
 #divColorpicker button{
@@ -50,9 +51,7 @@
   color: white;
       color: #fff;
       background-position: 99% 50%;
-
 }
-
 
 #divTextInput{
   display: flex;

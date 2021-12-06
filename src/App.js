@@ -7,7 +7,7 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Thumbnail = () =>{
-  const [color, setColor] = useState('grey')
+  const [color, setColor] = useState('#dae5e8')
   const [showButton, setShowButton] = useState(false)
   const canvas = useRef(null)
   const [thumbText, setThumbText] = useState('')
@@ -33,7 +33,7 @@ return (
         <h1>STARGAZER blog Thumbnail Maker</h1>
 
         <div id="divGithubLink">
-            <a href="https://heibondk.tistory.com"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
+            <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
         </div>
     </div>
     <div id="divCanvas">
@@ -58,8 +58,7 @@ return (
     </div>
    
     <div id="divTextInput">
-      썸네일 텍스트 
-      <input type="text" 
+      <input type="text" placeholder="썸네일 텍스트" 
         value={ thumbText } 
         onChange = {e=> setThumbText(e.target.value)} 
       />
