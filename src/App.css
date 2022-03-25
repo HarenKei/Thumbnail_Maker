@@ -53,8 +53,7 @@
   flex-flow: column;
 }
 
-#divImageUpload button{
-  display: inline-block;
+#divImageUpload form{
     padding: 1em 2em;
     border-radius: 0;
   color: black;

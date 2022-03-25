@@ -58,7 +58,10 @@ return (
     </div>
     
     <div id = "divImageUpload">
-      <button>이미지 파일 업로드</button>
+      <form id = "uploadInput">
+        <input type = "file" id = "image" accept="img/*"/>
+        <label htmlFor="image">사진 선택하기</label>
+      </form>
 
     </div>
    
