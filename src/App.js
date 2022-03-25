@@ -56,6 +56,11 @@ return (
       }
 
     </div>
+    
+    <div id = "divImageUpload">
+      <button>이미지 파일 업로드</button>
+
+    </div>
    
     <div id="divTextInput">
       <input type="text" placeholder="썸네일 텍스트" 

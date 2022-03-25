@@ -45,6 +45,30 @@
   background-position: 1% 50%;
   background-size: 400% 300%;
   border: 1px solid grey;
+  
+}
+
+#divImageUpload{
+  display: flex;
+  flex-flow: column;
+}
+
+#divImageUpload button{
+  display: inline-block;
+    padding: 1em 2em;
+    border-radius: 0;
+  color: black;
+    margin-top:2rem;
+    font-weight: bold;
+    font-size: 0.678rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  background: linear-gradient(to right, rgba(grey, 0) 25%, rgba(grey, .8) 75%);
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid grey;
+  
 }
 
 #divColorpicker button:hover{
