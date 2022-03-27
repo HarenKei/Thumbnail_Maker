@@ -11,6 +11,7 @@ const Thumbnail = () =>{
   const [showButton, setShowButton] = useState(false)
   const canvas = useRef(null)
   const [thumbText, setThumbText] = useState('')
+  const [image, setImage] = useState(null)
 
   useEffect(() => {
       const ctx = canvas.current.getContext("2d")
@@ -45,34 +46,33 @@ return (
     
     </div>
 
-    <div id="divColorpicker">
-      <button onClick={()=>setShowButton(showButton=>!showButton)}>
-        {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
-      </button>
-      {showButton && (<BlockPicker
-                        color={color}
-                        onChangeComplete={(color) => setColor(color.hex)}/>
-                      )
-      }
+    <div id="divCanvasAdjustment">
 
-    </div>
-    
-    <div id = "divImageUpload">
-      <form id = "uploadInput">
-        <input type = "file" id = "image" accept="img/*"/>
-        <label htmlFor="image">사진 선택하기</label>
-      </form>
+      <div id="divColorpicker">
+        <button onClick={()=>setShowButton(showButton=>!showButton)}>
+          {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
+        </button>
+        {showButton && (<BlockPicker
+                          color={color}
+                          onChangeComplete={(color) => setColor(color.hex)}/>
+                        )
+        }
+      </div>
 
-    </div>
+      <div id="divImageSelect">
+        <input type={image}/>
+        <button>이미지 삽입</button>
+      </div>
    
-    <div id="divTextInput">
-      <input type="text" placeholder="썸네일 텍스트" 
-        value={ thumbText } 
-        onChange = {e=> setThumbText(e.target.value)} 
-      />
+     <div id="divTextInput">
+        <input type="text" placeholder="썸네일 텍스트" 
+          value={ thumbText } 
+          onChange = {e=> setThumbText(e.target.value)} 
+        />
 
       
       
+      </div>
     </div>
   </div>
 )
