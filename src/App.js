@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFill } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { DefConLogo } from './images/Defcon_logo_use.svg';
+import { fab, faGithub, faInstagram, faFacebook, faTwitter, faGooglePlay, faGit } from "@fortawesome/free-brands-svg-icons";
+
 
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Thumbnail = () =>{
-  const [color, setColor] = useState('#fff')
+  const [color, setColor] = useState('#dae5e8')
   const [showButton, setShowButton] = useState(false)
   const canvas = useRef(null)
   const [thumbText, setThumbText] = useState('')
+  const [image, setImage] = useState(null)
 
   useEffect(() => {
       const ctx = canvas.current.getContext("2d")
@@ -30,9 +30,14 @@ const Thumbnail = () =>{
   
 return (
   <div>
-    <h1>STARGAZER blog Thumbnail Maker</h1>
+    <div id="divHeader">
+        <h1>STARGAZER blog Thumbnail Maker</h1>
 
-    <div>
+        <div id="divGithubLink">
+            <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
+        </div>
+    </div>
+    <div id="divCanvas">
       <canvas 
         ref={ canvas } 
         width="800px"
@@ -41,38 +46,33 @@ return (
     
     </div>
 
-    <div>
-      <button onClick={()=>setShowButton(showButton=>!showButton)}>
-        <FontAwesomeIcon icon={faFill} color={color} size="lg"/>
-        {/*{showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}*/}
-      </button>
-      {showButton && (<BlockPicker
-                        color={color}
-                        onChangeComplete={(color) => setColor(color.hex)}/>
-                      )
-      }
+    <div id="divCanvasAdjustment">
 
-    </div>
+      <div id="divColorpicker">
+        <button onClick={()=>setShowButton(showButton=>!showButton)}>
+          {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
+        </button>
+        {showButton && (<BlockPicker
+                          color={color}
+                          onChangeComplete={(color) => setColor(color.hex)}/>
+                        )
+        }
+      </div>
+
+      <div id="divImageSelect">
+        <input type={image}/>
+        <button>이미지 삽입</button>
+      </div>
    
-    <div>
-      <input type="text" 
-        value={ thumbText } 
-        onChange = {e=> setThumbText(e.target.value)} 
-      />
-      <br/>
-      썸네일 텍스트
-      
-      
-    </div>
+     <div id="divTextInput">
+        <input type="text" placeholder="썸네일 텍스트" 
+          value={ thumbText } 
+          onChange = {e=> setThumbText(e.target.value)} 
+        />
 
-    <div>
-        <h2>footer</h2>
-        <a href="https://github.com/HarenKei">
-        <FontAwesomeIcon icon={faGithub} color = "grey" size="lg"/>
-        </a>
-        <a href="https://defcon.or.kr">
-          <img src={DefConLogo}/>
-        </a>
+      
+      
+      </div>
     </div>
   </div>
 )
