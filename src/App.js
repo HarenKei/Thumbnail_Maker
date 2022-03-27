@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
-import { fab, faGithub, faInstagram, faFacebook, faTwitter, faGooglePlay, faGit } from "@fortawesome/free-brands-svg-icons";
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
+import { fab, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 
 import './App.css';
@@ -60,7 +61,9 @@ return (
       </div>
 
       <div id="divImageSelect">
-        <input type={image}/>
+        <input type={image} 
+               onChange={(e)=> setImage(e.target.files[0])
+        }/>
         <button>이미지 삽입</button>
       </div>
    
@@ -69,9 +72,6 @@ return (
           value={ thumbText } 
           onChange = {e=> setThumbText(e.target.value)} 
         />
-
-      
-      
       </div>
     </div>
   </div>
