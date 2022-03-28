@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab, faGithub } from "@fortawesome/free-brands-svg-icons";
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Thumbnail = () =>{
-  const [color, setColor] = useState('#dae5e8')
-  const [showButton, setShowButton] = useState(false)
-  const canvas = useRef(null)
-  const [thumbText, setThumbText] = useState('')
-  const [image, setImage] = useState(null)
+  const [color, setColor] = useState('#dae5e8');
+  const [showButton, setShowButton] = useState(false);
+  const canvas = useRef(null);
+  const [thumbText, setThumbText] = useState('');
 
   useEffect(() => {
       const ctx = canvas.current.getContext("2d")
@@ -26,6 +27,19 @@ const Thumbnail = () =>{
       ctx.textAlign = "center"
 
   }, [canvas, thumbText, color])
+  
+  const onDownloadBtn = () =>{
+    const card = canvas.current;
+    const fileName = setThumbText.current;
+    
+    domtoimage
+      .toBlob(card)
+      .then((blob) => {
+        saveAs(blob,'thumbnail.png');
+      });
+  }
+
+
 
 
   
@@ -61,10 +75,9 @@ return (
       </div>
 
       <div id="divImageSelect">
-        <input type={image} 
-               onChange={(e)=> setImage(e.target.files[0])
-        }/>
-        <button>이미지 삽입</button>
+        <button className='thumbDown' onClick={onDownloadBtn}>
+        썸네일 저장
+        </button>
       </div>
    
      <div id="divTextInput">
@@ -77,5 +90,4 @@ return (
   </div>
 )
 }
-
 export default Thumbnail;
