@@ -1,17 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -90,3 +77,19 @@ input{
   border-bottom: 5px solid gray;
   margin-left:100px;
 }
+
+#divHeader{
+  display : flex;
+  flex-flow : nowrap row;
+  justify-content : center;
+  align-items: center;
+}
+
+#divGithubLink{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:end;
+  margin-left:20px;
+}
+

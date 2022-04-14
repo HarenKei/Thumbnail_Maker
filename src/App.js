@@ -9,7 +9,7 @@ import { saveAs } from 'file-saver';
 import './App.css';
 
 
-const Thumbnail = () =>{
+const App = () =>{
   const [color, setColor] = useState('#dae5e8');
   const [showButton, setShowButton] = useState(false);
   const canvas = useRef(null);
@@ -30,17 +30,13 @@ const Thumbnail = () =>{
   
   const onDownloadBtn = () =>{
     const card = canvas.current;
-    const fileName = setThumbText.current;
-    
-    domtoimage
+
+    domtoimage //제작된 썸네일 다운로드
       .toBlob(card)
-      .then((blob) => {
-        saveAs(blob,'thumbnail.png');
+      .then((blob,) => {
+        saveAs(blob, 'myThumbnail_.png');
       });
   }
-
-
-
 
   
 return (
@@ -48,20 +44,20 @@ return (
     <div id="divHeader">
         <h1>STARGAZER blog Thumbnail Maker</h1>
 
-        <div id="divGithubLink">
+        <div id="divGithubLink"> {/* 내 깃허브 링크 (feat. fontawesome) */}
             <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
         </div>
-    </div>
+    </div> {/* End of divHeader */}
+
     <div id="divCanvas">
       <canvas 
         ref={ canvas } 
-        width="800px"
+        width="800px" 
         height="500px"
-      /> 
-    
-    </div>
+      /> {/*캔버스 크기 가변적으로 고치고 싶음*/}
+    </div> {/* End of divCanvas */}
 
-    <div id="divCanvasAdjustment">
+    <div id="divCanvasAdjustment"> 
 
       <div id="divColorpicker">
         <button onClick={()=>setShowButton(showButton=>!showButton)}>
@@ -72,22 +68,24 @@ return (
                           onChangeComplete={(color) => setColor(color.hex)}/>
                         )
         }
-      </div>
+      </div> {/* End of divColorpicker */}
 
-      <div id="divImageSelect">
+      <div id="divThumbnailSave">
         <button className='thumbDown' onClick={onDownloadBtn}>
         썸네일 저장
         </button>
-      </div>
+      </div> {/* End of divThumbnailSave */}
    
      <div id="divTextInput">
         <input type="text" placeholder="썸네일 텍스트" 
           value={ thumbText } 
           onChange = {e=> setThumbText(e.target.value)} 
         />
-      </div>
-    </div>
-  </div>
+      </div> { /* End of divTextInput */ }
+
+    </div> {/* End of divCanvasAdjustment */}
+
+  </div> 
 )
 }
-export default Thumbnail;
+export default App;
