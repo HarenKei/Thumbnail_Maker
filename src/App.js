@@ -70,7 +70,7 @@ return (
         <button onClick={()=>setShowButton(showButton=>!showButton)}>
           {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
         </button>
-        {showButton && (<BlockPicker
+        {showButton && (<SketchPicker
                           color={color}
                           onChangeComplete={(color) => setColor(color.hex)}/>
                         )
