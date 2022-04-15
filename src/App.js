@@ -14,9 +14,11 @@ const App = () =>{
   const [showButton, setShowButton] = useState(false);
   const canvas = useRef(null);
   const [thumbText, setThumbText] = useState('');
+  var thumbName ='';
 
   useEffect(() => {
       const ctx = canvas.current.getContext("2d")
+      //Start of canvas useEffect
       ctx.fillStyle= color
       ctx.fillRect(0, 0, 960, 540)
 
@@ -25,18 +27,23 @@ const App = () =>{
       ctx.fillText(thumbText, (800/2), (500/2))
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
+      //End of canvas useEffect
 
+      thumbName = thumbText; //For Making Thumbnail file name.
   }, [canvas, thumbText, color])
-  
+
   const onDownloadBtn = () =>{
     const card = canvas.current;
 
     domtoimage //제작된 썸네일 다운로드
+  
       .toBlob(card)
       .then((blob,) => {
-        saveAs(blob, 'myThumbnail_.png');
+        saveAs(blob, thumbName);
       });
   }
+  
+  
 
   
 return (
