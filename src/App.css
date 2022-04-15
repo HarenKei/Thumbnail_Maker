@@ -93,3 +93,11 @@ input{
   margin-left:20px;
 }
 
+#divCanvas{
+  display : flex;
+  justify-content: center;
+  height : 500px;
+  width: 800px;
+  
+}
+
