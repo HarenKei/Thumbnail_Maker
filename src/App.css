@@ -65,17 +65,20 @@ button{
   margin-left:60px;
   margin-bottom:20px;
   box-shadow: 0 0 5px grey;
-  width:50px;
+  width:150px;
   border: 0;
   outline: 0;
+  padding:10px 10px;
+  border-radius:30px;
 }
 
 input{
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 5px solid gray;
-  margin-left:100px;
+  display:block;
+  margin:0 auto;
+  border: 2px solid gray;
+  font-size:14pt;
+  text-align:center;
+  padding:10px 20px;
 }
 
 #divHeader{
@@ -94,7 +97,8 @@ input{
 }
 
 #divCanvas{
-  display : flex;
+  display : block;
+  margin:0 auto;
   justify-content: center;
   height : 500px;
   width: 800px;
