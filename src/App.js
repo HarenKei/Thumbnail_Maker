@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab, faGithub } from "@fortawesome/free-brands-svg-icons";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
-
+import Select from 'react-select';
 
 import './App.css';
 
@@ -15,8 +15,8 @@ const App = () =>{
   const canvas = useRef(null);
   const [thumbText, setThumbText] = useState('');
   const [textSize, setTextSize] = useState('');
-  const [cnvsWidth, setCnvsWidth] = useState(960);
-  const [cnvsHeight, setCnvsHeight] = useState(540);
+  const [cnvsWidth, setCnvsWidth] = useState(800);
+  const [cnvsHeight, setCnvsHeight] = useState(500);
   var thumbName ='';
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const App = () =>{
 
       ctx.font = "80px Noto Sans CJK KR"
       ctx.fillStyle = "white"
-      ctx.fillText(thumbText, (800/2), (500/2))
+      ctx.fillText(thumbText, (cnvsWidth/2), (cnvsHeight/2))
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
       //End of canvas useEffect
@@ -63,8 +63,8 @@ return (
     <div id="divCanvas">
       <canvas 
         ref={ canvas } 
-        width= {cnvsWidth} 
-        height= {cnvsHeight}
+        width= { cnvsWidth } 
+        height= { cnvsHeight }
       /> {/*캔버스 크기 가변적으로 고치고 싶음*/}
     </div> {/* End of divCanvas */}
 
@@ -102,7 +102,7 @@ return (
     <div id = "divCnavsHeight">
       <input type = "text" placeholder = "height"
         value = { cnvsHeight }
-        onChange = {e => setCnvsWidth(e.target.value)}
+        onChange = {e => setCnvsHeight(e.target.value)}
       />
     </div>
     <div id="divTextSize">
