@@ -105,3 +105,10 @@ input{
   
 }
 
+#divCanvasAdjustment{
+  display: flex;
+  margin : 0, auto;
+}
+
+
+
