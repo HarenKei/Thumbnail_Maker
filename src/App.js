@@ -114,10 +114,11 @@ return (
 
     <div id = "divSelectSize">
   
-      <Select className="fontSize" 
+      <Select 
+      className = "fontSize" 
       placeholder = "폰트 사이즈"
       options = { options } 
-      value = { textSize.value }
+      value = { textSize }
       onChange = {e => setTextSize(e)}
       />
     </div>{/* End of divSelectSize*/}
