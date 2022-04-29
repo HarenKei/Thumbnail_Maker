@@ -5,18 +5,19 @@ import { fab, faGithub } from "@fortawesome/free-brands-svg-icons";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
-
 import './App.css';
 
 
 const App = () =>{
   const [color, setColor] = useState('#dae5e8');
   const [showButton, setShowButton] = useState(false);
+  const [showTxtButton, setShowTxtButton] = useState(false);
   const canvas = useRef(null);
   const [thumbText, setThumbText] = useState('');
   const [cnvsWidth, setCnvsWidth] = useState(800);
   const [cnvsHeight, setCnvsHeight] = useState(500);
   const [textSize, setTextSize] = useState("80px");
+  const [textColor, setTextColor] = useState('#ffffff'); 
   const options = [ 
     { label: "50px", value: "50px" },
     { label: "70px", value: "70px" },
@@ -25,23 +26,26 @@ const App = () =>{
     { label: "120px", value: "120px" },
     { label: "150px", value: "150px" }
   ];
+  
+
   var thumbName ='';
 
-  useEffect(() => {
+  useEffect(() => { 
       
       const ctx = canvas.current.getContext("2d")
       //Start of canvas useEffect
-      ctx.fillStyle= color
+      ctx.fillStyle = color
       ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-      ctx.font = textSize.value + " Noto Sans CJK KR"
-      ctx.fillStyle = "white"
+      ctx.font = textSize + " Noto Sans CJK KR"
+      console.log(ctx.font)
+      ctx.fillStyle = textColor 
       ctx.fillText(thumbText, (cnvsWidth/2), (cnvsHeight/2))
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
       //End of canvas useEffect
 
       thumbName = thumbText; //For Making Thumbnail file name.
-  }, [canvas, thumbText, color, cnvsWidth, cnvsHeight])
+  }, [canvas, thumbText, color, cnvsWidth, cnvsHeight, textColor, textSize])
 
   const onDownloadBtn = () =>{
     const CurCanvas = canvas.current;
@@ -77,14 +81,14 @@ return (
           {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
         </button>
         {showButton && (<SketchPicker
-                          color={color}
-                          onChangeComplete={(color) => setColor(color.hex)}/>
+                          color={ color }
+                          onChangeComplete={ (color) => setColor(color.hex) }/>
                         )
         }
       </div> {/* End of divColorpicker */}
 
       <div id = "divThumbnailSave">
-        <button className = 'thumbDown' onClick = {onDownloadBtn}>
+        <button className = 'thumbDown' onClick = { onDownloadBtn }>
         썸네일 저장
         </button>
       </div> {/* End of divThumbnailSave */}
@@ -92,7 +96,7 @@ return (
      <div id="divTextInput">
         <input type = "text" placeholder = "썸네일 텍스트" 
           value = { thumbText } 
-          onChange = {e=> setThumbText(e.target.value)} 
+          onChange = { e=> setThumbText(e.target.value) } 
         />
       </div> { /* End of divTextInput */ }
 
@@ -100,7 +104,7 @@ return (
       width : 
       <input type = "text" placeholder = "width"
         value = { cnvsWidth }
-        onChange = {e => setCnvsWidth(e.target.value)}
+        onChange = { e => setCnvsWidth(e.target.value) }
       />
     </div>
 
@@ -108,20 +112,30 @@ return (
       height : 
       <input type = "text" placeholder = "height"
         value = { cnvsHeight }
-        onChange = {e => setCnvsHeight(e.target.value)}
+        onChange = { e => setCnvsHeight(e.target.value) }
       />
     </div>
 
     <div id = "divSelectSize">
-  
       <Select 
       className = "fontSize" 
       placeholder = "폰트 사이즈"
       options = { options } 
       value = { textSize }
-      onChange = {e => setTextSize(e)}
+      onChange = { e => setTextSize(e) }
       />
     </div>{/* End of divSelectSize*/}
+
+    <div id = "divTxtColorpicker">
+        <button onClick = {()=>setShowTxtButton(showTxtButton=>!showTxtButton)}>
+          { showTxtButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
+        </button>
+        {showTxtButton && (<SketchPicker
+                          color={ textColor }
+                          onChangeComplete={ e => setTextColor(e.hex) }/>
+                        )
+        }
+      </div>
 
 
     </div> {/* End of divCanvasAdjustment */}
