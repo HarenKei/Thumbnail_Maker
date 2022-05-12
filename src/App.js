@@ -9,15 +9,6 @@ import './App.css';
 
 
 const App = () =>{
-  const [color, setColor] = useState('#dae5e8'); //canvas color
-  const [showButton, setShowButton] = useState(false); // canvas color
-  const [showTxtButton, setShowTxtButton] = useState(false); // text color
-  const canvas = useRef(null);// canvas 
-  const [thumbText, setThumbText] = useState(''); //canvas text
-  const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
-  const [cnvsHeight, setCnvsHeight] = useState(540);
-  const [textSize, setTextSize] = useState("80px");
-  const [textColor, setTextColor] = useState('#ffffff'); 
   const options = [ 
     { label: "50px", value: "50px" },
     { label: "70px", value: "70px" },
@@ -26,6 +17,16 @@ const App = () =>{
     { label: "120px", value: "120px" },
     { label: "150px", value: "150px" }
   ];
+  const [color, setColor] = useState('#dae5e8'); //canvas color
+  const [showButton, setShowButton] = useState(false); // canvas color
+  const [showTxtButton, setShowTxtButton] = useState(false); // text color
+  const canvas = useRef(null);// canvas 
+  const [thumbText, setThumbText] = useState(''); //canvas text
+  const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
+  const [cnvsHeight, setCnvsHeight] = useState(500);
+  const [textSize, setTextSize] = useState(options[2].value);
+  const [textColor, setTextColor] = useState('#ffffff'); 
+  
   const widthOptions = [
     {label : "640px", value : 640},
     {label : "800px", value : 800},
