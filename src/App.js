@@ -31,13 +31,11 @@ const App = () =>{
   var thumbName ='';
 
   useEffect(() => { 
-      
       const ctx = canvas.current.getContext("2d")
       //Start of canvas useEffect
       ctx.fillStyle = color
       ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-      ctx.font = textSize + " Noto Sans CJK KR"
-      console.log(ctx.font)
+      ctx.font = textSize.value + " Noto Sans CJK KR"
       ctx.fillStyle = textColor 
       ctx.fillText(thumbText, (cnvsWidth/2), (cnvsHeight/2))
       ctx.textBaseline = "middle"
