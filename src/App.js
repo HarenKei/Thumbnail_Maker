@@ -21,10 +21,10 @@ const App = () =>{
   const [showButton, setShowButton] = useState(false); // canvas color
   const [showTxtButton, setShowTxtButton] = useState(false); // text color
   const canvas = useRef(null);// canvas 
-  const [thumbText, setThumbText] = useState(''); //canvas text
+  const [thumbText, setThumbText] = useState('텍스트 입력'); //canvas text
   const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
   const [cnvsHeight, setCnvsHeight] = useState(540);
-  const [textSize, setTextSize] = useState("options[2].value");
+  const [textSize, setTextSize] = useState(options[2].value);
   const [textColor, setTextColor] = useState('#ffffff'); 
   
   const widthOptions = [
