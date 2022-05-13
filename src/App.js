@@ -17,14 +17,14 @@ const App = () =>{
     { label: "120px", value: "120px" },
     { label: "150px", value: "150px" }
   ];
-  const [color, setColor] = useState('#dae5e8'); //canvas color
+  const [color, setColor] = useState('#FFC745'); //canvas color
   const [showButton, setShowButton] = useState(false); // canvas color
   const [showTxtButton, setShowTxtButton] = useState(false); // text color
   const canvas = useRef(null);// canvas 
   const [thumbText, setThumbText] = useState(''); //canvas text
   const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
-  const [cnvsHeight, setCnvsHeight] = useState(500);
-  const [textSize, setTextSize] = useState(options[2].value);
+  const [cnvsHeight, setCnvsHeight] = useState(540);
+  const [textSize, setTextSize] = useState("options[2].value");
   const [textColor, setTextColor] = useState('#ffffff'); 
   
   const widthOptions = [
@@ -42,25 +42,13 @@ const App = () =>{
   var thumbName ='';
 
   useEffect(() => { 
-<<<<<<< HEAD
       const ctx = canvas.current.getContext("2d")
       //Start of canvas useEffect
       ctx.fillStyle = color
       ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
       ctx.font = textSize.value + " Noto Sans CJK KR"
-=======
-      var width = cnvsWidth.value;
-      var height = cnvsHeight.value;
-      
-      const ctx = canvas.current.getContext("2d")
-      //Start of canvas useEffect
-      ctx.fillStyle = color
-      ctx.fillRect(0, 0, 800, 500)
-      ctx.font = textSize.value + " Noto Sans CJK KR"
-      console.log(ctx.font)
->>>>>>> 7698d75d1af484fc769d6aea9a0e3ebc8a3dbef7
       ctx.fillStyle = textColor 
-      ctx.fillText(thumbText, 800/2, 500/2)
+      ctx.fillText(thumbText, 800/2, 540/2)
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
       //End of canvas useEffect
@@ -78,7 +66,7 @@ const App = () =>{
   }
 
 return (
-  <div>
+  <div id="divWrap">
     <div id="divHeader">
         <h1>STARGAZER blog Thumbnail Maker</h1>
 
