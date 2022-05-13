@@ -6,6 +6,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
 import './App.css';
+import './Canvas.js';
 
 
 const App = () =>{
