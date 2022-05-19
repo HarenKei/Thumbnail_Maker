@@ -42,32 +42,23 @@ const App = () =>{
   var thumbName ='';
 
   useEffect(() => { 
-<<<<<<< HEAD
-      const ctx = canvas.current.getContext("2d")
-      //Start of canvas useEffect
-      ctx.fillStyle = color
-      ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-      ctx.font = textSize.value + " Noto Sans CJK KR"
-=======
-      var width = cnvsWidth.value;
-      var height = cnvsHeight.value;
-      
-      const ctx = canvas.current.getContext("2d")
-      //Start of canvas useEffect
-      ctx.fillStyle = color
-      ctx.fillRect(0, 0, 800, 500)
-      ctx.font = textSize.value + " Noto Sans CJK KR"
-      console.log(ctx.font)
->>>>>>> 7698d75d1af484fc769d6aea9a0e3ebc8a3dbef7
-      ctx.fillStyle = textColor 
-      ctx.fillText(thumbText, 800/2, 500/2)
-      ctx.textBaseline = "middle"
-      ctx.textAlign = "center"
-      //End of canvas useEffect
+    var width = cnvsWidth.value;
+    var height = cnvsHeight.value;
+    
+    const ctx = canvas.current.getContext("2d")
+    //Start of canvas useEffect
+    ctx.fillStyle = color
+    ctx.fillRect(0, 0, 800, 500)
+    ctx.font = textSize.value + " Noto Sans CJK KR"
+    console.log(ctx.font)
+    ctx.fillStyle = textColor 
+    ctx.fillText(thumbText, 800/2, 500/2)
+    ctx.textBaseline = "middle"
+    ctx.textAlign = "center"
+    //End of canvas useEffect
 
-      thumbName = thumbText; //For Making Thumbnail file name.
-  }, [canvas, thumbText, color, cnvsWidth, cnvsHeight, textColor, textSize])
-
+    thumbName = thumbText; //For Making Thumbnail file name.
+}, [canvas, thumbText, color, cnvsWidth, cnvsHeight, textColor, textSize])
   const onDownloadBtn = () =>{
     const CurCanvas = canvas.current;
     domtoimage //제작된 썸네일 다운로드
