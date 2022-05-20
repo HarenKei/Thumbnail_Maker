@@ -1,14 +1,14 @@
 
 
 #divWrap {
-  background-color: #008A87;
+  background-color: #91C788;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #FFC745;
+  color: #FEFFDE;
 }
 
 .App-link {
@@ -94,7 +94,7 @@ input{
   align-items: center;
   justify-content:end;
   margin-left:20px;
-  color : #FFC745;
+  color : #FEFFDE;
 }
 
 #divCanvas{

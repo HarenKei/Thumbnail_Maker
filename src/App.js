@@ -18,15 +18,15 @@ const App = () =>{
     { label: "120px", value: "120px" },
     { label: "150px", value: "150px" }
   ];
-  const [color, setColor] = useState('#FFC745'); //canvas color
+  const [color, setColor] = useState('#FEFFDE'); //canvas color
   const [showButton, setShowButton] = useState(false); // canvas color
   const [showTxtButton, setShowTxtButton] = useState(false); // text color
   const canvas = useRef(null);// canvas 
-  const [thumbText, setThumbText] = useState('텍스트 입력'); //canvas text
+  const [thumbText, setThumbText] = useState(''); //canvas text
   const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
   const [cnvsHeight, setCnvsHeight] = useState(540);
-  const [textSize, setTextSize] = useState(options[2].value);
-  const [textColor, setTextColor] = useState('#ffffff'); 
+  const [textSize, setTextSize] = useState("80px");
+  const [textColor, setTextColor] = useState('#52734D'); 
   
   const widthOptions = [
     {label : "640px", value : 640},
@@ -43,32 +43,14 @@ const App = () =>{
   var thumbName ='';
 
   useEffect(() => { 
-<<<<<<< HEAD
-    var width = cnvsWidth.value;
-    var height = cnvsHeight.value;
-    
-    const ctx = canvas.current.getContext("2d")
-    //Start of canvas useEffect
-    ctx.fillStyle = color
-    ctx.fillRect(0, 0, 800, 500)
-    ctx.font = textSize.value + " Noto Sans CJK KR"
-    console.log(ctx.font)
-    ctx.fillStyle = textColor 
-    ctx.fillText(thumbText, 800/2, 500/2)
-    ctx.textBaseline = "middle"
-    ctx.textAlign = "center"
-    //End of canvas useEffect
 
-    thumbName = thumbText; //For Making Thumbnail file name.
-}, [canvas, thumbText, color, cnvsWidth, cnvsHeight, textColor, textSize])
-=======
       const ctx = canvas.current.getContext("2d")
       //Start of canvas useEffect
       ctx.fillStyle = color
       ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-      ctx.font = textSize.value + " Noto Sans CJK KR"
+      ctx.font = textSize + " Noto Sans CJK KR"
       ctx.fillStyle = textColor 
-      ctx.fillText(thumbText, 800/2, 540/2)
+      ctx.fillText(thumbText, cnvsWidth/2, cnvsHeight/2)
       ctx.textBaseline = "middle"
       ctx.textAlign = "center"
       //End of canvas useEffect
@@ -76,7 +58,6 @@ const App = () =>{
       thumbName = thumbText; //For Making Thumbnail file name.
   }, [canvas, thumbText, color, cnvsWidth, cnvsHeight, textColor, textSize])
 
->>>>>>> c3da904b195c72e3a5fdb3fa8a0fb6cf55c5f939
   const onDownloadBtn = () =>{
     const CurCanvas = canvas.current;
     domtoimage //제작된 썸네일 다운로드
@@ -89,7 +70,7 @@ const App = () =>{
 return (
   <div id="divWrap">
     <div id="divHeader">
-        <h1>STARGAZER blog Thumbnail Maker</h1>
+        <h1>STARGAZER Blog Thumbnail Maker</h1>
 
         <div id="divGithubLink"> {/* 내 깃허브 링크 (feat. fontawesome) */}
             <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
