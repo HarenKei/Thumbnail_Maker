@@ -70,7 +70,7 @@ const App = () =>{
 return (
   <div id="divWrap">
     <div id="divHeader">
-        <h1>STARGAZER Blog Thumbnail Maker</h1>
+        <p>STARGAZER Blog Thumbnail Maker</p>
 
         <div id="divGithubLink"> {/* 내 깃허브 링크 (feat. fontawesome) */}
             <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
