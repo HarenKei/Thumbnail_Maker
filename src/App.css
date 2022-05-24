@@ -9,20 +9,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #FEFFDE;
-  overflow-y:hidden;
+ 
 }
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @font-face {
@@ -106,6 +97,10 @@ input{
   padding:10px 20px;
 }
 
+#divTextInput input{
+  width : 580px;
+}
+
 #divHeader{
   display : flex;
   flex-flow : nowrap row;
@@ -147,6 +142,7 @@ input{
   margin : 0, auto;
   justify-content : center;
   align-items: center;
+  color : black;
 }
 #divOterAdjustment{
   display: flex;

@@ -7,6 +7,7 @@ import { saveAs } from 'file-saver';
 import Select from 'react-select';
 import './App.css';
 import './Canvas.js';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 const App = () =>{
@@ -25,7 +26,7 @@ const App = () =>{
   const [thumbText, setThumbText] = useState(''); //canvas text
   const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
   const [cnvsHeight, setCnvsHeight] = useState(540);
-  const [textSize, setTextSize] = useState("80px");
+  const [textSize, setTextSize] = useState(options[2]);
   const [textColor, setTextColor] = useState('#52734D'); 
   
   const widthOptions = [
@@ -48,7 +49,7 @@ const App = () =>{
       //Start of canvas useEffect
       ctx.fillStyle = color
       ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-      ctx.font = textSize + " Noto Sans CJK KR"
+      ctx.font = textSize.value + " Noto Sans CJK KR"
       ctx.fillStyle = textColor 
       ctx.fillText(thumbText, cnvsWidth/2, cnvsHeight/2)
       ctx.textBaseline = "middle"
@@ -144,6 +145,7 @@ return (
       placeholder = "폰트 사이즈"
       options = { options } 
       value = { textSize }
+      defaultValue = { textSize[2] }
       onChange = { e => setTextSize(e) }
       />
     </div>{/* End of divSelectSize*/}
