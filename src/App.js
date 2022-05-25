@@ -6,6 +6,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
 import './App.css';
+import Title from './Title';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
 
@@ -67,12 +68,9 @@ const App = () =>{
 
 return (
   <div id="divWrap">
+    <Title/>
     <div id="divHeader">
-        <p>STARGAZER Blog Thumbnail Maker</p>
 
-        <div id="divGithubLink"> {/* 내 깃허브 링크 (feat. fontawesome) */}
-            <a href="https://github.com/HarenKei/Thumbnail_Maker"><FontAwesomeIcon icon={faGithub} color="black" size="2x"/></a>
-        </div>
     </div> {/* End of divHeader */}
 
     <div id="divCanvasContainer">

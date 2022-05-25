@@ -109,25 +109,9 @@ input{
   width : 580px;
 }
 
-#divHeader{
-  display : flex;
-  flex-flow : nowrap row;
-  justify-content : center;
-  align-items: center;
-}
 
-#divHeader > p:first-child{
-  font-weight:bold;
-  font-size:31pt;
-}
 
-#divGithubLink{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content:end;
-  margin-left:20px;
-}
+
 
 #divCanvas{
   display : flex;
