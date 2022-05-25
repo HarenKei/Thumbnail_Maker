@@ -9,24 +9,24 @@ import './App.css';
 import Title from './Title';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
+const fontSizeOptions = [ 
+  { label: "50px", value: "50px" },
+  { label: "70px", value: "70px" },
+  { label: "80px", value: "80px" },
+  { label: "100px", value: "100px" },
+  { label: "120px", value: "120px" },
+  { label: "150px", value: "150px" }
+]; //Thumbnail Font Size Select Options.
+
+const canvasSizePreset = [
+  {label : "640px", value :[640, 360] },
+  {label : "800px", value : [800, 450]},
+  {label : "864px", value : [864, 486]},
+  {label : "960px", value : [960, 540]},
+]; //Canvas Size Select Options preset.
+
 
 const App = () =>{
-  const fontSizeOptions = [ 
-    { label: "50px", value: "50px" },
-    { label: "70px", value: "70px" },
-    { label: "80px", value: "80px" },
-    { label: "100px", value: "100px" },
-    { label: "120px", value: "120px" },
-    { label: "150px", value: "150px" }
-  ];
-
-  const canvasSizePreset = [
-    {label : "640px", value :[640, 360] },
-    {label : "800px", value : [800, 450]},
-    {label : "864px", value : [864, 486]},
-    {label : "960px", value : [960, 540]},
-  ];
-
   const [color, setColor] = useState('#FEFFDE'); //canvas color
   const [showButton, setShowButton] = useState(false); // canvas color
   const [showTxtButton, setShowTxtButton] = useState(false); // text color
@@ -35,8 +35,7 @@ const App = () =>{
   const [cnvsSize, setCnvsSize] = useState(canvasSizePreset[1]); 
   const [textSize, setTextSize] = useState(fontSizeOptions[2]);
   const [textColor, setTextColor] = useState('#52734D'); 
-  
-  console.log(cnvsSize);
+
   
   
   var thumbName ='';
