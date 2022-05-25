@@ -16,6 +16,14 @@
   color: #61dafb;
 }
 
+#divCanvasContainer{
+  width : 960px;
+  height : 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @font-face {
   font-family: 'Noto Sans CJK KR';
   font-style: normal;
@@ -122,11 +130,10 @@ input{
 }
 
 #divCanvas{
-  display : block;
+  display : flex;
   margin:0 auto;
   justify-content: center;
-  height : 500px;
-  width: 800px;
+  
   
 }
 
