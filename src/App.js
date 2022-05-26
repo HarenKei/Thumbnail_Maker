@@ -7,6 +7,7 @@ import './App.css';
 import Title from './Title';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
+
 const fontSizePreset = [ 
   { label: "50px", value: "50px" },
   { label: "70px", value: "70px" },

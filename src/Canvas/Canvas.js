@@ -4,19 +4,6 @@ import Controller from "../Controller";
 
 const Canvas = (props) =>{
 
-    useEffect(() => {
-        const ctx = props.Controllerthumbnail.current.getContext("2d")
-        ctx.fillStyle = props.color
-        ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
-        ctx.font = textSize.value + " Noto Sans CJK KR"
-        ctx.fillStyle = textColor 
-        ctx.fillText(thumbText, cnvsWidth/2, cnvsHeight/2)
-        ctx.textBaseline = "middle"
-        ctx.textAlign = "center"
-        //End of canvas useEffect
-    }, [thumbnail, cnvsWidth, cnvsHeight, textSize, thumbText])
-    
-    
     return(
         <div>
             <div id="divCanvas">
