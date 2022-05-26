@@ -1,16 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Canvas.css";
+import Controller from "../Controller";
 
-const Canvas = () =>{
-    const thumbnail = useRef(null);// Thumbnail Canvas
-    const [color, setColor] = useState('#FFC745'); //canvas color
-    const [thumbText, setThumbText] = useState('텍스트 입력'); //canvas text
-    const [cnvsWidth, setCnvsWidth] = useState(800); //canvas width
-    const [cnvsHeight, setCnvsHeight] = useState(540);
+const Canvas = (props) =>{
 
     useEffect(() => {
-        const ctx = thumbnail.current.getContext("2d")
-        ctx.fillStyle = color
+        const ctx = props.Controllerthumbnail.current.getContext("2d")
+        ctx.fillStyle = props.color
         ctx.fillRect(0, 0, cnvsWidth, cnvsHeight)
         ctx.font = textSize.value + " Noto Sans CJK KR"
         ctx.fillStyle = textColor 
@@ -25,12 +21,15 @@ const Canvas = () =>{
         <div>
             <div id="divCanvas">
                 <canvas 
-                ref = { canvas } 
-                width = { cnvsSize.value[0] } 
-                height = { cnvsSize.value[1] }
+                ref = { props.canvas } 
+                width = { props.cnvsSize.value[0] } 
+                height = { props.cnvsSize.value[1] }
                 />  {/*캔버스 크기 가변적으로 고치고 싶음*/}
             </div> {/* End of divCanvas */}
+
+            <Controller/>
         </div>
+        
     )
 }
 

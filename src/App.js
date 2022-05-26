@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SketchPicker, BlockPicker } from 'react-color';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fab, faGithub } from "@fortawesome/free-brands-svg-icons";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
@@ -9,7 +7,7 @@ import './App.css';
 import Title from './Title';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
-const fontSizeOptions = [ 
+const fontSizePreset = [ 
   { label: "50px", value: "50px" },
   { label: "70px", value: "70px" },
   { label: "80px", value: "80px" },
@@ -27,34 +25,30 @@ const canvasSizePreset = [
 
 
 const App = () =>{
-  const [color, setColor] = useState('#FEFFDE'); //canvas color
-  const [showButton, setShowButton] = useState(false); // canvas color
+  const [canvasColor, setCanvasColor] = useState('#FEFFDE'); //canvas color states.
+  const [showCanvasButton, setShowCanvasButton] = useState(false); // canvas color button states.
+  const [textColor, setTextColor] = useState('#52734D'); //text color states.
   const [showTxtButton, setShowTxtButton] = useState(false); // text color
-  const canvas = useRef(null);// canvas 
-  const [thumbText, setThumbText] = useState(''); //canvas text
-  const [cnvsSize, setCnvsSize] = useState(canvasSizePreset[1]); 
-  const [textSize, setTextSize] = useState(fontSizeOptions[2]);
-  const [textColor, setTextColor] = useState('#52734D'); 
 
-  
-  
-  var thumbName ='';
+  const canvas = useRef(null);// canvas useRef.
+  const [canvasSize, setCanvasSize] = useState(canvasSizePreset[1]); //canvas size states.
 
-  useEffect(() => { 
+  const [thumbText, setThumbText] = useState(''); //canvas text states.
+  const [textSize, setTextSize] = useState(fontSizePreset[2]); //text size states.
+    
+  var thumbName =''; //var for image file name.
 
-      const ctx = canvas.current.getContext("2d")
-      //Start of canvas useEffect
-      ctx.fillStyle = color
-      ctx.fillRect(0, 0, cnvsSize.value[0],cnvsSize.value[1])
-      ctx.font = textSize.value + " Noto Sans CJK KR"
-      ctx.fillStyle = textColor 
-      ctx.fillText(thumbText, cnvsSize.value[0] / 2, cnvsSize.value[1] / 2)
-      ctx.textBaseline = "middle"
-      ctx.textAlign = "center"
-      //End of canvas useEffect
-
-      thumbName = thumbText; //For Making Thumbnail file name.
-  }, [canvas, thumbText, color, cnvsSize, textColor, textSize])
+  useEffect(() => {
+      const currentCanvas = canvas.current.getContext("2d")
+      currentCanvas.fillStyle = canvasColor
+      currentCanvas.fillRect(0, 0, canvasSize.value[0],canvasSize.value[1])
+      currentCanvas.font = textSize.value + " Noto Sans CJK KR"
+      currentCanvas.fillStyle = textColor 
+      currentCanvas.fillText(thumbText, canvasSize.value[0] / 2, canvasSize.value[1] / 2)
+      currentCanvas.textBaseline = "middle"
+      currentCanvas.textAlign = "center"
+      thumbName = thumbText; //For Making Thumbnail image file name.
+  }, [canvas, thumbText, canvasColor, canvasSize, textColor, textSize])
 
   const onDownloadBtn = () =>{
     const CurCanvas = canvas.current;
@@ -67,91 +61,89 @@ const App = () =>{
 
 return (
   <div id="divWrap">
-    <Title/>
-    <div id="divHeader">
-
-    </div> {/* End of divHeader */}
+    
+    <Title/> {/* header */}
 
     <div id="divCanvasContainer">
       <div id="divCanvas">
-       <canvas 
-         ref = { canvas } 
-         width = { cnvsSize.value[0] } 
-         height = { cnvsSize.value[1] }
-        /> {/*캔버스 크기 가변적으로 고치고 싶음*/}
-    </div> {/* End of divCanvas */}
-    </div>
+        <canvas 
+          ref = { canvas } 
+          width = { canvasSize.value[0] } 
+          height = { canvasSize.value[1] }
+        />
+      </div> {/* End of divCanvas */}
+    </div> {/* End of divCanvasContainer */}
 
-    <div id = "divCanvasAdjustment"> 
+    <div id = "divCanvasAdjustment">
 
-      
+      <div id = "divTextAndSize">
 
-      
-    <div id = "divTextAndSize">
-      <div id="divTextInput">
-          <input type = "text" placeholder = "썸네일 텍스트" 
-            value = { thumbText } 
-          onChange = { e=> setThumbText(e.target.value) } 
-         />
+        <div id="divTextInput">
+            <input type = "text" placeholder = "썸네일 텍스트" 
+              value = { thumbText } 
+              onChange = { e=> setThumbText(e.target.value) } 
+            />
         </div> { /* End of divTextInput */ }
 
         <div id = "divThumbnailSave">
-          <button className = 'thumbDown' onClick = { onDownloadBtn }>
-          썸네일 저장
-          </button>
+            <button className = 'thumbDown' onClick = { onDownloadBtn }>
+            썸네일 저장
+            </button>
         </div> {/* End of divThumbnailSave */}
-    </div>{/* End of divTextAndSize */}
+
+      </div>{/* End of divTextAndSize */}
 
     <div id = "divOterAdjustment">
-      <div id = "divColorpicker">
-          <button onClick = {()=>setShowButton(showButton=>!showButton)}>
-            {showButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
+
+      <div id = "divCanvasColor">
+          <button onClick = {()=>setShowCanvasButton(showCanvasButton=>!showCanvasButton)}>
+            {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
          </button>
-         {showButton && (<SketchPicker
-                           color={ color }
-                           onChangeComplete={ (color) => setColor(color.hex) }/>
+         {showCanvasButton && (<SketchPicker
+                           color={ canvasColor }
+                           onChangeComplete={ (color) => setCanvasColor(color.hex) }/>
                          )
            }
       </div> {/* End of divColorpicker */}
 
-      <div id = "divTxtColorpicker">
-        <button onClick = {()=>setShowTxtButton(showTxtButton=>!showTxtButton)}>
-          { showTxtButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
-        </button>
-        {showTxtButton && (<SketchPicker
-                          color={ textColor }
-                          onChangeComplete={ e => setTextColor(e.hex) }/>
-                        )
-        }
-      </div>
+      <div id = "divTxtColor">
+          <button onClick = {()=>setShowTxtButton(showTxtButton=>!showTxtButton)}>
+            { showTxtButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
+          </button>
+          {showTxtButton && (<SketchPicker
+                            color={ textColor }
+                            onChangeComplete={ (color) => setTextColor(color.hex) }/>
+                          )
+          }
+      </div> {/* End of divTxtColor */}
 
-      <div id = "divCnavsSize">
+      <div id = "divCanvasSize">
         <Select 
-           className = "canvasWidHei" 
+           className = "canvasSize" 
            placeholder = "Width * Height"
            options = { canvasSizePreset } 
-           value = { cnvsSize }
-           defaultValue = { cnvsSize[1] }
-           onChange = { e => setCnvsSize(e) }
+           value = { canvasSize }
+           defaultValue = { canvasSize[1] }
+           onChange = { (value) => setCanvasSize(value) }
         />
       </div>
 
       <div id = "divSelectSize">
-      <Select 
-      className = "fontSize" 
-      placeholder = "폰트 사이즈"
-      options = { fontSizeOptions } 
-      value = { textSize }
-      defaultValue = { textSize[2] }
-      onChange = { e => setTextSize(e) }
-      />
-    </div>{/* End of divSelectSize*/}
-     </div>
-   
+       <Select 
+          className = "fontSize" 
+          placeholder = "폰트 사이즈"
+          options = { fontSizePreset } 
+          value = { textSize }
+          defaultValue = { textSize[2] }
+          onChange = { (value) => setTextSize(value) }
+        />
+      </div>{/* End of divSelectSize*/}
 
     </div> {/* End of divCanvasAdjustment */}
+   
+  </div> {/* End of divWrap */}
 
-  </div> 
+</div> 
 )
 }
 export default App;
