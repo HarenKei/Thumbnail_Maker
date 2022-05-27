@@ -4,7 +4,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
 import './App.css';
-import Title from './Title';
+import Title from './components/Title';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
 
@@ -18,7 +18,7 @@ const fontSizePreset = [
 ]; //Thumbnail Font Size Select Options.
 
 const canvasSizePreset = [
-  {label : "640px", value :[640, 360] },
+  {label : "640px", value : [640, 360] },
   {label : "800px", value : [800, 450]},
   {label : "864px", value : [864, 486]},
   {label : "960px", value : [960, 540]},
@@ -51,7 +51,7 @@ const App = () =>{
       thumbName = thumbText; //For Making Thumbnail image file name.
   }, [canvas, thumbText, canvasColor, canvasSize, textColor, textSize])
 
-  const onDownloadBtn = () =>{
+  const onDownloadBtn = () => {
     const CurCanvas = canvas.current;
     domtoimage //제작된 썸네일 다운로드
       .toBlob(CurCanvas)

@@ -8,10 +8,10 @@ const Canvas = (props) =>{
         <div>
             <div id="divCanvas">
                 <canvas 
-                ref = { props.canvas } 
-                width = { props.cnvsSize.value[0] } 
-                height = { props.cnvsSize.value[1] }
-                />  {/*캔버스 크기 가변적으로 고치고 싶음*/}
+                    ref = { props.canvas } 
+                    width = { props.cnvsSize.value[0] } 
+                    height = { props.cnvsSize.value[1] }
+                />
             </div> {/* End of divCanvas */}
 
             <Controller/>
