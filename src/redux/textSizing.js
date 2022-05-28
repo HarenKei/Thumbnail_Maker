@@ -13,7 +13,7 @@ const initTextSize = { value : fontSizePreset[2].value };
 
 export const textSizeSlice = createSlice({
     name: "textSize",
-    initialState: {value: initText},
+    initialState: {value: initTextSize},
     reducers: {
         textSizing: ( state, action ) => {
             state.value = action.payload
