@@ -4,6 +4,7 @@ import textInputReducer from './textInput';
 import canvasSizeReducer from "./canvasSizing";
 import canvasColorReducer from "./canvasColor";
 import textColorReducer from "./textColor";
+import buttonReducer from "./button";
 
 export default configureStore({
     reducer: {
@@ -12,6 +13,6 @@ export default configureStore({
         textColor: textColorReducer,
         canvasSizing: canvasSizeReducer,
         canvasColor: canvasColorReducer,
-
+        buttonState: buttonReducer,
     }
 })
