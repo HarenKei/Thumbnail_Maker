@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//input text, text Sizing, Canvas Sizing, Color Change.
-
 const fontSizePreset = [ 
     { label: "50px", value: "50px" },
     { label: "70px", value: "70px" },
