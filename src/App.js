@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SketchPicker, BlockPicker } from 'react-color';
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
-import Select from 'react-select';
+import React from 'react';
 import './App.css';
 import Title from './components/Title';
 import Canvas from './components/Canvas';
-import ControlTest from './components/ControlTest';
-import { text } from '@fortawesome/fontawesome-svg-core';
+import Controller from './components/Controller';
 
 
 
@@ -24,7 +19,7 @@ return (
 
     </div>
     <div id="contrlotest">
-      <ControlTest/>
+      <Controller/>
     </div>
     
   </div> 

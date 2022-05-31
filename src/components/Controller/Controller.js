@@ -1,42 +1,65 @@
-import React, { useState, useEffect, useRef} from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { SketchPicker, BlockPicker } from 'react-color';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+
 import Select from 'react-select';
 
+
+import { textInput } from '../../redux/textInput';
+import { textSizing } from '../../redux/textSizing';
+import { textColorChagne } from '../../redux/textColor';
+import { canvasSizing } from '../../redux/canvasSizing';
+import { chageCanvasColor } from '../../redux/canvasColor';
+
+import onDownloadBtn from '../Canvas/Canvas';
+
 const Controller = () => {
-    const dispatch = useDispatch();
-    const [showCanvasButton, setShowCanvasButton] = useState(false); // canvas color button states.
-    const [showTextButton, setShowTextButton] = useState(false);
-    const cnvsColor = useSelector((state) => state.canvasColor.value);
-    const thumbText = useSelector((state) => state.textInput.value);
-    const textSize = useSelector((state) => state.textSizing.value);
-    const textColor = useSelector((state) => state.textColor.value);
+
+    const canvas = useRef(null);
+
+    const fontSizePreset = [ 
+        { label: "50px", value: "50px" },
+        { label: "70px", value: "70px" },
+        { label: "80px", value: "80px" },
+        { label: "100px", value: "100px" },
+        { label: "120px", value: "120px" },
+        { label: "150px", value: "150px" }
+      ]; //Thumbnail Font Size Select Options.
 
     const canvasSizePreset = [
-        {label : "640px", value : [640, 360] },
-        {label : "800px", value : [800, 450]},
-        {label : "864px", value : [864, 486]},
-        {label : "960px", value : [960, 540]},
+        {label : "640 * 360", value : [640, 360] },
+        {label : "800 * 450", value : [800, 450]},
+        {label : "864 * 486", value : [864, 486]},
+        {label : "960 * 540", value : [960, 540]},
       ];
-    var thumbName =''; //var for image file name.
-  
+
+    const dispatch = useDispatch();
+
+    const [showCanvasButton, setShowCanvasButton] = useState(false);
+    const [showTxtButton, setShowTxtButton] = useState(false);
+
+    const cnvsColor = useSelector((state) => state.canvasColor.value);
+    const cnvsSize = useSelector((state) => state.canvasSizing.value);
+    const thumbText = useSelector((state) => state.textInput.value);
+    const textSize = useSelector((state) => state.textSizing.value);
+    const txtColor = useSelector((state) => state.textColor.value);
+    const thumbName = useSelector((state) => state.thumbName.value);
+      
     const onDownloadBtn = () =>{
-      const CurCanvas = canvas.current;
-      domtoimage //제작된 썸네일 다운로드
-        .toBlob(CurCanvas)
-        .then((blob,) => {
-          saveAs(blob, thumbName);
-        });
-    }
+        const CurCanvas = canvas.current;
+        domtoimage //제작된 썸네일 다운로드
+          .toBlob(CurCanvas)
+          .then((blob,) => {
+            saveAs(blob, thumbName);
+          });
+      }
 
     return(
         <div>
             <div id = "divControllerWrap">
-
                 <div id = "divTextAndSize">
-
                     <div id="divTextInput">
                         <input 
                             type = "text" 
@@ -53,12 +76,9 @@ const Controller = () => {
                             썸네일 저장
                         </button>
                     </div> {/* End of divThumbnailSave */}
-
                 </div>{/* End of divTextAndSize */}
-
                 <div id = "divOterAdjustment">
-
-                <div id = "divCanvasColor">
+                    <div id = "divCanvasColor">
                         <button 
                             onClick = {()=>setShowCanvasButton(setShowCanvasButton => !setShowCanvasButton)}>
                             {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
@@ -69,16 +89,16 @@ const Controller = () => {
                                     
                             )
                         }
-                </div> {/* End of divColorpicker */}
+                    </div> {/* End of divColorpicker */}
 
                     <div id = "divTxtColor">
                         <button 
-                        onClick = {()=> setShowTextButton(setShowTextButton=>!setShowTextButton)}>
-                        { showTextButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
+                        onClick = {()=> setShowTxtButton(setShowTxtButton=>!setShowTxtButton)}>
+                        { showTxtButton? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
                         </button>
-                        {showTextButton && (<BlockPicker
-                                                color={ textColor }
-                                                onChangeComplete={ (color) => dispatch(textColor(color.hex)) }/>
+                        {showTxtButton && (<BlockPicker
+                                                color={ txtColor }
+                                                onChangeComplete={ (color) => dispatch(textColorChagne(color.hex)) }/>
                             )
                         }
                     </div> {/* End of divTxtColor */}
@@ -88,9 +108,9 @@ const Controller = () => {
                            className = "canvasSize" 
                            placeholder = "Width * Height"
                            options = { canvasSizePreset } 
-                           value = { canvasSize }
-                           defaultValue = { canvasSize[1] }
-                           onChange = { (value) => setCanvasSize(value) }
+                           value = { cnvsSize }
+                           defaultValue = { cnvsSize[1] }
+                           onChange = { (value) => dispatch(canvasSizing(value)) }
                         />
                     </div>
 
@@ -100,8 +120,8 @@ const Controller = () => {
                           placeholder = "폰트 사이즈"
                           options = { fontSizePreset } 
                           value = { textSize }
-                          defaultValue = { textSize[2] }
-                          onChange = { (value) => setTextSize(value) }
+                          defaultValue = { textSize[1] }
+                          onChange = { (value) => dispatch(textSizing(value)) }
                         />
                     </div>{/* End of divSelectSize*/}
 

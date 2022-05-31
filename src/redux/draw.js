@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useRef } from "react";
 
-const CanvasColorInit = "#52734D";
 
 export const drawSlice = createSlice({
     name: "drawCanvas",
-    initialState: {value: CanvasColorInit},
+    initialState: {value: canvasInit},
     reducers:{
-        cnvsColorChange: (state, action) => {
+        cnvsState: (state, action) => {
             state.value = action.payload
         },
     }
 })
+
+export const { cnvsState } = drawSlice.actions;
+export default drawSlice.reducer;
+
