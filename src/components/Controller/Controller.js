@@ -4,13 +4,15 @@ import { SketchPicker, BlockPicker } from 'react-color';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 const Controller = () => {
     const dispatch = useDispatch();
-
-    const [showButton, setShowButton] = useState(false); // canvas color button states.
+    const [showCanvasButton, setShowCanvasButton] = useState(false); // canvas color button states.
+    const [showTextButton, setShowTextButton] = useState(false);
     const cnvsColor = useSelector((state) => state.canvasColor.value);
+    const thumbText = useSelector((state) => state.textInput.value);
+    const textSize = useSelector((state) => state.textSizing.value);
+    const textColor = useSelector((state) => state.textColor.value);
 
     const canvasSizePreset = [
         {label : "640px", value : [640, 360] },
@@ -56,24 +58,25 @@ const Controller = () => {
 
                 <div id = "divOterAdjustment">
 
-                    <div id = "divCanvasColor">
+                <div id = "divCanvasColor">
                         <button 
-                            onClick = {()=>setShowButton(setShowButton=>!setShowButton)}>
+                            onClick = {()=>setShowCanvasButton(setShowCanvasButton => !setShowCanvasButton)}>
                             {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
                         </button>
                         {showCanvasButton && (<SketchPicker
                                                     color={ cnvsColor }
-                                                    onChangeComplete={ (color) => dispatch(cnvsColorChange((color.hex))) }/>
+                                                    onChangeComplete={ (color) => dispatch(chageCanvasColor((color.hex))) }/>
+                                    
                             )
                         }
-                    </div> {/* End of divColorpicker */}
+                </div> {/* End of divColorpicker */}
 
                     <div id = "divTxtColor">
                         <button 
-                        onClick = {()=>dispatch(textSizing((showTxtButton=>!showTxtButton)))}>
-                        { showTxtButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
+                        onClick = {()=> setShowTextButton(setShowTextButton=>!setShowTextButton)}>
+                        { showTextButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
                         </button>
-                        {showTxtButton && (<SketchPicker
+                        {showTextButton && (<BlockPicker
                                                 color={ textColor }
                                                 onChangeComplete={ (color) => dispatch(textColor(color.hex)) }/>
                             )

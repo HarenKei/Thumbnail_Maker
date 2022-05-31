@@ -1,11 +1,13 @@
-import React, {useState, useSyncExternalStore} from 'react';
-import { SketchPicker } from 'react-color';
+import React, {useState} from 'react';
+import { SketchPicker, BlockPicker } from 'react-color';
 import { useDispatch, useSelector } from 'react-redux';
 import { chageCanvasColor } from '../redux/canvasColor';
 import { textInput } from '../redux/textInput';
 import { textSizing } from '../redux/textSizing';
 import { textColorChagne } from '../redux/textColor';
+import { canvasSizing } from '../redux/canvasSizing';
 import Select from 'react-select';
+
 
 const fontSizePreset = [ 
     { label: "50px", value: "50px" },
@@ -16,15 +18,26 @@ const fontSizePreset = [
     { label: "150px", value: "150px" }
   ]; //Thumbnail Font Size Select Options.
 
+  const canvasSizePreset = [
+    {label : "640px", value : [640, 360] },
+    {label : "800px", value : [800, 450]},
+    {label : "864px", value : [864, 486]},
+    {label : "960px", value : [960, 540]},
+  ];
+
 const ControlTest = () => {
+    const dispatch = useDispatch();
 
     const [showCanvasButton, setShowCanvasButton] = useState(false); // canvas color button states.
     const [showTxtButton, setShowTxtButton] = useState(false);
-    const dispatch = useDispatch();
+    
     const cnvsColor = useSelector((state) => state.canvasColor.value);
     const thumbText = useSelector((state) => state.textInput.value);
     const textSize = useSelector((state) => state.textSizing.value);
     const txtColor = useSelector((state) => state.textColor.value);
+    const cnvsSize = useSelector((state) => state.canvasSizing.value);
+
+    console.log("console/ControlTest.js -- cnvsSize.value[0]: " +  cnvsSize.value[0]);
 
 
     return (
@@ -74,6 +87,17 @@ const ControlTest = () => {
                             )
                         }
                     </div> {/* End of divTxtColor */}
+
+                    <div id = "divCanvasSize">
+                        <Select 
+                           className = "canvasSize" 
+                           placeholder = "Width * Height"
+                           options = { canvasSizePreset } 
+                           value = { cnvsSize }
+                           defaultValue = { cnvsSize[1] }
+                           onChange = { (value) => dispatch(canvasSizing(value)) }
+                        />
+                    </div>
         </div>
     )
 }
