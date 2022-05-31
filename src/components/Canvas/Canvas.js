@@ -14,7 +14,7 @@ const Canvas = () => {
     const textColor = useSelector((state) => state.textColor.value);
     const cnvsSize = useSelector((state) => state.canvasSizing.value);
     const thumbName = useSelector((state) => state.thumbName.value);
-    const canvas = useRef();
+    const canvas = useRef(null);
     //const textColor = useSelector((state) => state.textColor.value);
 
     console.log(cnvsSize.value[0], cnvsSize.value[1]);
