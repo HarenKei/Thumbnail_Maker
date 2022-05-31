@@ -7,10 +7,10 @@ import Select from 'react-select';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
 const Controller = () => {
-
-    const [cnvsColor, setCnvsColor] = useState("#FEFFDE");
-
     const dispatch = useDispatch();
+
+    const [showButton, setShowButton] = useState(false); // canvas color button states.
+    const cnvsColor = useSelector((state) => state.canvasColor.value);
 
     const canvasSizePreset = [
         {label : "640px", value : [640, 360] },
@@ -41,7 +41,7 @@ const Controller = () => {
                             placeholder = "썸네일 텍스트" 
                             value = { thumbText } 
                             onChange = { e=> dispatch(textInput(e.target.value)) } 
-                            />
+                        />
                     </div> { /* End of divTextInput */ }
 
                     <div id = "divThumbnailSave">
@@ -58,7 +58,7 @@ const Controller = () => {
 
                     <div id = "divCanvasColor">
                         <button 
-                            onClick = {()=>dispatch(cnvsColorChange((showCanvasButton=>!showCanvasButton)))}>
+                            onClick = {()=>setShowButton(setShowButton=>!setShowButton)}>
                             {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
                         </button>
                         {showCanvasButton && (<SketchPicker

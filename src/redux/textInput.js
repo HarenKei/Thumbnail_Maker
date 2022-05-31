@@ -14,4 +14,5 @@ export const textInputSlice = createSlice({
     },
 });
 
+export const { textInput } = textInputSlice.actions;
 export default textInputSlice.reducer;

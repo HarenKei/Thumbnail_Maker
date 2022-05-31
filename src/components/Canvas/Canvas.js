@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 const Canvas = () =>{
     const cnvsColor = useSelector((state) => state.canvasColor.value);
     const [textColor, setTextColor] = useState("black");
+    const thumbText = useSelector((state) => state.textInput.value);
+    const textSize = useSelector((state) => state.textSizing.value);
     //const cnvsSize = useSelector((state) => state.canvasSizing.value);
     //const textColor = useSelector((state) => state.textColor.value);
 
@@ -14,13 +16,15 @@ const Canvas = () =>{
         const currentCanvas = canvas.current.getContext("2d")
         currentCanvas.fillStyle = cnvsColor 
         currentCanvas.fillRect(0, 0, 800, 500)
-        currentCanvas.font = "80px Noto Sans CJK KR"
+        currentCanvas.font = textSize.value + " Noto Sans CJK KR"
         currentCanvas.fillStyle = textColor
-        currentCanvas.fillText("Redux 테스트", 800 / 2, 500 / 2)
+        currentCanvas.fillText(thumbText, 800 / 2, 500 / 2)
         currentCanvas.textBaseline = "middle"
         currentCanvas.textAlign = "center"
         //thumbName = thumbText; //For Making Thumbnail image file name.
-    }, [canvas, cnvsColor, textColor])
+
+        console.log(currentCanvas.font);
+    }, [canvas, cnvsColor, textColor, thumbText, textSize])
 
     return(
         <div>
