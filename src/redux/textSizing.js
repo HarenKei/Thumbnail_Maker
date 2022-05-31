@@ -9,7 +9,7 @@ const fontSizePreset = [
     { label: "150px", value: "150px" }
   ]; //Thumbnail Font Size Select Options.
 
-const initTextSize = { value : fontSizePreset[2] };
+const initTextSize = { value : fontSizePreset[2].value };
 
 export const textSizeSlice = createSlice({
     name: "textSizing",

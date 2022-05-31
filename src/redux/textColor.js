@@ -14,4 +14,5 @@ export const textColorSlice = createSlice({
 
 })
 
+export const { textColorChagne } = textColorSlice.actions;
 export default textColorSlice.reducer;

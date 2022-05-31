@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { chageCanvasColor } from '../redux/canvasColor';
 import { textInput } from '../redux/textInput';
 import { textSizing } from '../redux/textSizing';
+import { textColorChagne } from '../redux/textColor';
 import Select from 'react-select';
 
 const fontSizePreset = [ 
@@ -18,12 +19,12 @@ const fontSizePreset = [
 const ControlTest = () => {
 
     const [showCanvasButton, setShowCanvasButton] = useState(false); // canvas color button states.
+    const [showTxtButton, setShowTxtButton] = useState(false);
     const dispatch = useDispatch();
     const cnvsColor = useSelector((state) => state.canvasColor.value);
     const thumbText = useSelector((state) => state.textInput.value);
     const textSize = useSelector((state) => state.textSizing.value);
-
-    console.log(textSize.value);
+    const txtColor = useSelector((state) => state.textColor.value);
 
 
     return (
@@ -61,6 +62,18 @@ const ControlTest = () => {
                           onChange = { (value) => dispatch(textSizing(value)) }
                         />
             </div>{/* End of divSelectSize*/}
+
+            <div id = "divTxtColor">
+                        <button 
+                        onClick = {()=>setShowTxtButton(setShowTxtButton=>!setShowTxtButton)}>
+                        { showTxtButton ? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
+                        </button>
+                        {showTxtButton && (<SketchPicker
+                                                color={ txtColor }
+                                                onChangeComplete={ (color) => dispatch(textColorChagne((color.hex)))}/>
+                            )
+                        }
+                    </div> {/* End of divTxtColor */}
         </div>
     )
 }
