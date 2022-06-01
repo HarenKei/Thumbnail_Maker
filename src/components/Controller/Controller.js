@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SketchPicker, BlockPicker } from 'react-color';
 import domtoimage from 'dom-to-image';
@@ -13,11 +13,8 @@ import { textColorChagne } from '../../redux/textColor';
 import { canvasSizing } from '../../redux/canvasSizing';
 import { chageCanvasColor } from '../../redux/canvasColor';
 
-import onDownloadBtn from '../Canvas/Canvas';
+const Controller = forwardRef((props, ref) => {
 
-const Controller = () => {
-
-    const canvas = useRef(null);
 
     const fontSizePreset = [ 
         { label: "50px", value: "50px" },
@@ -46,6 +43,7 @@ const Controller = () => {
     const textSize = useSelector((state) => state.textSizing.value);
     const txtColor = useSelector((state) => state.textColor.value);
     const thumbName = useSelector((state) => state.thumbName.value);
+    const canvas = { canvasRef };
       
     const onDownloadBtn = () =>{
         const CurCanvas = canvas.current;
@@ -54,6 +52,7 @@ const Controller = () => {
           .then((blob,) => {
             saveAs(blob, thumbName);
           });
+          console.log(thumbName);
       }
 
     return(
@@ -133,6 +132,6 @@ const Controller = () => {
 
     )
 
-}
+});
 
 export default Controller;

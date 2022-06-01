@@ -19,7 +19,7 @@ return (
 
     </div>
     <div id="contrlotest">
-      <Controller/>
+      {/*<Controller/>*/}
     </div>
     
   </div> 
