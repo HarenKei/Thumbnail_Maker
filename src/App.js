@@ -19,7 +19,6 @@ return (
 
     </div>
     <div id="contrlotest">
-      <Controller/>
     </div>
     
   </div> 

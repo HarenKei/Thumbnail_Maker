@@ -3,6 +3,7 @@ import "./Canvas.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addThumbName } from "../../redux/thumbName";
 import Controller from "../Controller";
+import Download from "../Controller/Download";
 
 
 
@@ -15,13 +16,11 @@ const Canvas = () => {
     const textColor = useSelector((state) => state.textColor.value);
     const cnvsSize = useSelector((state) => state.canvasSizing.value);
     const thumbName = useSelector((state) => state.thumbName.value);
-    const canvasRef = useRef(null);
     //const textColor = useSelector((state) => state.textColor.value);
-
-    console.log(cnvsSize.value[0], cnvsSize.value[1]);
+    const cnvsRef = useRef();
 
     useEffect(() => {
-        const currentCanvas = canvasRef.current.getContext("2d")
+        const currentCanvas = cnvsRef.current.getContext("2d")
         currentCanvas.fillStyle = cnvsColor 
         currentCanvas.fillRect(0, 0, cnvsSize.value[0], cnvsSize.value[1])
         currentCanvas.font = textSize.value + " Noto Sans CJK KR"
@@ -30,7 +29,8 @@ const Canvas = () => {
         currentCanvas.textBaseline = "middle"
         currentCanvas.textAlign = "center"
         dispatch(addThumbName(thumbText));
-    }, [canvasRef, cnvsColor, textColor, thumbText, textSize, cnvsSize, thumbName])
+        const nameRef = thumbText;
+    }, [cnvsRef, cnvsColor, textColor, thumbText, textSize, cnvsSize, thumbName])
 
     
 
@@ -38,14 +38,16 @@ const Canvas = () => {
         <div>
             <div id="divCanvas">
                 <canvas 
-                    ref = { canvasRef }
+                    ref = { cnvsRef }
                     width = { cnvsSize.value[0] }
                     height = { cnvsSize.value[1] }
                 />
             </div> {/* End of divCanvas */}
+
+            <Controller ref = { cnvsRef }/>
         </div>
         
     )
-}
+};
 
 export default Canvas;
