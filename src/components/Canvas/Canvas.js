@@ -42,8 +42,6 @@ const Canvas = () => {
                     width = { cnvsSize.value[0] }
                     height = { cnvsSize.value[1] }
                 />
-
-                <Controller ref = { canvasRef }/>
             </div> {/* End of divCanvas */}
         </div>
         
