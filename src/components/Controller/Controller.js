@@ -43,7 +43,7 @@ const Controller = forwardRef((props, ref) => {
     const textSize = useSelector((state) => state.textSizing.value);
     const txtColor = useSelector((state) => state.textColor.value);
     const thumbName = useSelector((state) => state.thumbName.value);
-    const canvas = { canvasRef };
+    const canvas = useRef(null);
       
     const onDownloadBtn = () =>{
         const CurCanvas = canvas.current;
