@@ -3,7 +3,6 @@ import "./Canvas.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addThumbName } from "../../redux/thumbName";
 import Controller from "../Controller";
-import Download from "../Controller/Download";
 
 
 

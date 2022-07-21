@@ -53,7 +53,6 @@ const Controller = forwardRef(({}, canvasRef) => {
           .then((blob,) => {
             saveAs(blob, thumbName);
           });
-          console.log(thumbName);
       }
 
     return(
