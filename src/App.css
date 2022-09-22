@@ -1,99 +1,147 @@
-#divHeader{
+
+
+#divWrap {
+  background-color: #91C788;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #FEFFDE;
+ 
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+#divCanvasContainer{
+  width : 960px;
+  height : 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: 100;
+  src: url("styles/fonts/NotoSansKR-Light.woff2") format('woff2'),
+  url("styles/fonts/NotoSansKR-Light.woff") format('woff'),
+  url("styles/fonts/NotoSansKR-Light.otf") format('truetype')
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: normal;
+  src: url("styles/fonts/NotoSansKR-Regular.woff2") format('woff2'),
+  url("styles/fonts/NotoSansKR-Regular.woff") format('woff'),
+  url("styles/fonts/NotoSansKR-Regular.otf") format('truetype')
+}
+
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: 500;
+  src: url("styles/fonts/NotoSansKR-Medium.woff2") format('woff2'),
+  url("styles/fonts/NotoSansKR-Medium.woff") format('woff'),
+  url("styles/fonts/NotoSansKR-Medium.otf") format('truetype')
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK KR';
+  font-style: normal;
+  font-weight: bold;
+  src: url("styles/fonts/NotoSansKR-Bold.woff2") format('woff2'),
+  url("styles/fonts/NotoSansKR-Bold.woff") format('woff'),
+  url("styles/fonts/NotoSansKR-Bold.otf") format('truetype')
+}
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 180px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  padding:10px 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #2e2e2e;
+  border-radius: 10px;
+  border: 3px solid #52734D;
+  transition: all 0.2s ;
+  background: #FEFFDE;
+}
+
+
+button:hover {
+  background: #a4ee34;
+  cursor:pointer;
+}
+
+select{
+  display : block;
+  width : 120px;
+  line-height: 40px;
+  height : 40px;
+}
+
+input{
+  display:block;
+  background-color: #FEFFDE;
+  color:#2e2e2e;
+  margin:0, auto;
+  margin-right: 10px;
+  border: 3px solid #52734D;
+  border-radius:10px;
+  font-size:11pt;
+  text-align:center;
+  padding:10px 20px;
+}
+
+#divTextInput input{
+  width : 580px;
+}
+
+
+
+
+
+#divCanvas{
   display : flex;
-  flex-flow : nowrap row;
+  margin:0 auto;
+  justify-content: center;
+  
+  
+}
+
+#divCanvasAdjustment{
+  display: flex;
+  flex-direction: column;
+  margin-top : 50px;
+}
+
+#divTextAndSize{
+  display: flex;
+  flex-direction: row;
+  margin : 0, auto;
+  justify-content : center;
+  align-items: center;
+  color : black;
+}
+#divOterAdjustment{
+  display: flex;
+  flex-direction: row;
+  margin : 0, auto;
   justify-content : center;
   align-items: center;
 }
 
-#divGithubLink{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content:end;
-  margin-left:20px;
-}
-
-#divCanvas{
-  display: flex;
-  flex-flow : nowrap row;
-  justify-content: center;
-  align-items: center;
-  flex-basis: auto;
-}
 
 
-#divColorpicker{
-  display: flex;
-  flex-flow:nowrap column;
-  justify-content: center;
-  align-items: center;
-  margin-top:10px;
-}
-
-#divColorpicker button{
-  display: inline-block;
-    padding: 1em 2em;
-    border-radius: 0;
-  color: black;
-    margin-top:2rem;
-    font-weight: bold;
-    font-size: 0.678rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-  background: linear-gradient(to right, rgba(grey, 0) 25%, rgba(grey, .8) 75%);
-  background-position: 1% 50%;
-  background-size: 400% 300%;
-  border: 1px solid grey;
-  
-}
-
-#divImageUpload{
-  display: flex;
-  flex-flow: column;
-}
-
-#divImageUpload form{
-    padding: 1em 2em;
-    border-radius: 0;
-  color: black;
-    margin-top:2rem;
-    font-weight: bold;
-    font-size: 0.678rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-  background: linear-gradient(to right, rgba(grey, 0) 25%, rgba(grey, .8) 75%);
-  background-position: 1% 50%;
-  background-size: 400% 300%;
-  border: 1px solid grey;
-  
-}
-
-#divColorpicker button:hover{
-  color: white;
-      color: #fff;
-      background-position: 99% 50%;
-}
-
-#divTextInput{
-  display: flex;
-  flex-flow: nowrap row;
-  justify-content: center;
-}
-#divTextInput{
-  margin-top:20px;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-#divTextInput input{
-  width:960px;
-  margin-left:10px;
-  border-top:none;
-  border-left:none;
-  border-right:none;
-  border-bottom:solid black;
-  font-size: 20px;
-  outline: none;
-}
