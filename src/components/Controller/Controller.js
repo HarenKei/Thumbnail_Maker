@@ -1,20 +1,34 @@
-import React, { useState, useRef, forwardRef } from 'react';
+import React, { useState, useRef, forwardRef} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SketchPicker, BlockPicker } from 'react-color';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
-
 import Select from 'react-select';
-
-
 import { textInput } from '../../redux/textInput';
 import { textSizing } from '../../redux/textSizing';
 import { textColorChagne } from '../../redux/textColor';
 import { canvasSizing } from '../../redux/canvasSizing';
 import { chageCanvasColor } from '../../redux/canvasColor';
 
+
+
 const Controller = forwardRef(({}, canvasRef) => {
 
+    const customStyles = {
+        control: (base, state) => ({
+          ...base,
+          background: "#FEFFDE",
+          color: "#91C788",
+          // Overwrittes the different states of border
+          borderColor: state.isFocused ? "green" : "yellow",
+          // Removes weird border around container
+          boxShadow: state.isFocused ? null : null,
+          "&:hover": {
+            // Overwrittes the different states of border
+            borderColor: state.isFocused ? "red" : "blue"
+          }
+        })
+      };
 
     const fontSizePreset = [ 
         { label: "50px", value: "50px" },
@@ -30,21 +44,17 @@ const Controller = forwardRef(({}, canvasRef) => {
         {label : "800 * 450", value : [800, 450]},
         {label : "864 * 486", value : [864, 486]},
         {label : "960 * 540", value : [960, 540]},
-      ];
+      ]; //Thumbnail Canvas Size Select Options.
 
     const dispatch = useDispatch();
-
     const [showCanvasButton, setShowCanvasButton] = useState(false);
     const [showTxtButton, setShowTxtButton] = useState(false);
-
     const cnvsColor = useSelector((state) => state.canvasColor.value);
     const cnvsSize = useSelector((state) => state.canvasSizing.value);
     const thumbText = useSelector((state) => state.textInput.value);
     const textSize = useSelector((state) => state.textSizing.value);
     const txtColor = useSelector((state) => state.textColor.value);
     const thumbName = useSelector((state) => state.thumbName.value);
-    
-
       
     const onDownloadBtn = () =>{
         const CurCanvas = canvasRef.current;
@@ -103,24 +113,26 @@ const Controller = forwardRef(({}, canvasRef) => {
                     </div> {/* End of divTxtColor */}
 
                     <div id = "divCanvasSize">
+                        썸네일 사이즈
                         <Select 
                            className = "canvasSize" 
-                           placeholder = "Width * Height"
                            options = { canvasSizePreset } 
                            value = { cnvsSize }
                            defaultValue = { cnvsSize[1] }
                            onChange = { (value) => dispatch(canvasSizing(value)) }
+                           styles = {customStyles}
                         />
                     </div>
 
                     <div id = "divSelectSize">
+                        폰트 사이즈
                         <Select 
                           className = "fontSize" 
-                          placeholder = "폰트 사이즈"
                           options = { fontSizePreset } 
                           value = { textSize }
                           defaultValue = { textSize[1] }
                           onChange = { (value) => dispatch(textSizing(value)) }
+                          styles = {customStyles}
                         />
                     </div>{/* End of divSelectSize*/}
 

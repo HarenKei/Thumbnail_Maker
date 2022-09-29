@@ -3,6 +3,7 @@ import Title from './components/Title';
 import Canvas from './components/Canvas';
 import styled from 'styled-components';
 
+
 const App = () =>{
 return (
   <AppMainStyle>
@@ -22,60 +23,25 @@ return (
 }
 
 const AppMainStyle = styled.div`
+
+  @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
     background-color: #91C788;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: #FEFFDE;
+    font-family: 'Pretendard-Regular';
 
-    @font-face {
-      font-family: 'Noto Sans CJK KR';
-      font-style: normal;
-      font-weight: 100;
-      src: url("styles/fonts/NotoSansKR-Light.woff2") format('woff2'),
-      url("styles/fonts/NotoSansKR-Light.woff") format('woff'),
-      url("styles/fonts/NotoSansKR-Light.otf") format('truetype')
-    }
+    
+  
 
-    @font-face {
-      font-family: 'Noto Sans CJK KR';
-      font-style: normal;
-      font-weight: normal;
-      src: url("styles/fonts/NotoSansKR-Regular.woff2") format('woff2'),
-      url("styles/fonts/NotoSansKR-Regular.woff") format('woff'),
-      url("styles/fonts/NotoSansKR-Regular.otf") format('truetype')
-    }
-
-
-    @font-face {
-      font-family: 'Noto Sans CJK KR';
-      font-style: normal;
-      font-weight: 500;
-      src: url("styles/fonts/NotoSansKR-Medium.woff2") format('woff2'),
-      url("styles/fonts/NotoSansKR-Medium.woff") format('woff'),
-      url("styles/fonts/NotoSansKR-Medium.otf") format('truetype')
-    }
-
-    @font-face {
-      font-family: 'Noto Sans CJK KR';
-      font-style: normal;
-      font-weight: bold;
-      src: url("styles/fonts/NotoSansKR-Bold.woff2") format('woff2'),
-      url("styles/fonts/NotoSansKR-Bold.woff") format('woff'),
-      url("styles/fonts/NotoSansKR-Bold.otf") format('truetype')
-    }
-    @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
-
-    #divCanvasContainer{
-  width : 960px;
-  height : 540px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
 
@@ -126,15 +92,10 @@ input{
   width : 580px;
 }
 
-
-
-
-
 #divCanvas{
   display : flex;
   margin:0 auto;
   justify-content: center;
-  
   
 }
 
