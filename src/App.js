@@ -17,7 +17,6 @@ const AppMainStyle = styled.div`
 
   @font-face {
     font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
   }
@@ -30,28 +29,9 @@ const AppMainStyle = styled.div`
     font-size: calc(10px + 2vmin);
     font-family: 'Pretendard-Regular';
     height: 100%;
-  
+ 
 
 
-select{
-  display : block;
-  width : 200px;
-  line-height: 40px;
-  height : 40px;
-}
-
-input{
-  display:block;
-  background-color: #FEFFDE;
-  color:#2e2e2e;
-  margin:0, auto;
-  margin-right: 10px;
-  border: 3px solid #52734D;
-  border-radius:10px;
-  font-size:11pt;
-  text-align:center;
-  padding:10px 20px;
-}
 
 #divTextInput input{
   width : 580px;

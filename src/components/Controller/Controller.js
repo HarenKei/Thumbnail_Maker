@@ -71,7 +71,7 @@ const Controller = forwardRef(({}, canvasRef) => {
             <div id = "divControllerWrap">
                 <div id = "divTextAndSize">
                     <div id="divTextInput">
-                        <input 
+                        <InputTextStyle
                             type = "text" 
                             placeholder = "썸네일 텍스트" 
                             value = { thumbText } 
@@ -144,6 +144,19 @@ const Controller = forwardRef(({}, canvasRef) => {
     )
 
 });
+
+const InputTextStyle = styled.input`
+    display:block;
+    background-color: #FEFFDE;
+    color:#2e2e2e;
+    margin:0, auto;
+    margin-right: 10px;
+    border: 3px solid #52734D;
+    border-radius:10px;
+    font-size:11pt;
+    text-align:center;
+    padding:10px 20px;
+`;
 
 const CtrlButtonStyle = styled.button`
     display: block;
