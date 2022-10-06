@@ -9,6 +9,7 @@ import { textSizing } from '../../redux/textSizing';
 import { textColorChagne } from '../../redux/textColor';
 import { canvasSizing } from '../../redux/canvasSizing';
 import { chageCanvasColor } from '../../redux/canvasColor';
+import styled from 'styled-components';
 
 
 
@@ -78,20 +79,18 @@ const Controller = forwardRef(({}, canvasRef) => {
                         />
                     </div> { /* End of divTextInput */ }
 
-                    <div id = "divThumbnailSave">
-                        <button 
-                            className = 'thumbDown'
+
+                        <CtrlButtonStyle
                             onClick = { onDownloadBtn }>
                             썸네일 저장
-                        </button>
-                    </div> {/* End of divThumbnailSave */}
+                        </CtrlButtonStyle>
                 </div>{/* End of divTextAndSize */}
                 <div id = "divOterAdjustment">
                     <div id = "divCanvasColor">
-                        <button 
+                        <CtrlButtonStyle
                             onClick = {()=>setShowCanvasButton(setShowCanvasButton => !setShowCanvasButton)}>
                             {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
-                        </button>
+                        </CtrlButtonStyle>
                         {showCanvasButton && (<SketchPicker
                                                     color={ cnvsColor }
                                                     onChangeComplete={ (color) => dispatch(chageCanvasColor((color.hex))) }/>
@@ -101,10 +100,10 @@ const Controller = forwardRef(({}, canvasRef) => {
                     </div> {/* End of divColorpicker */}
 
                     <div id = "divTxtColor">
-                        <button 
+                        <CtrlButtonStyle
                         onClick = {()=> setShowTxtButton(setShowTxtButton=>!setShowTxtButton)}>
                         { showTxtButton? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
-                        </button>
+                        </CtrlButtonStyle>
                         {showTxtButton && (<BlockPicker
                                                 color={ txtColor }
                                                 onChangeComplete={ (color) => dispatch(textColorChagne(color.hex)) }/>
@@ -145,5 +144,28 @@ const Controller = forwardRef(({}, canvasRef) => {
     )
 
 });
+
+const CtrlButtonStyle = styled.button`
+    display: block;
+    position: relative;
+    float: left;
+    width: 180px;
+    padding: 0;
+    margin: 10px 20px 10px 0;
+    padding:10px 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #2e2e2e;
+    border-radius: 10px;
+    border: 3px solid #52734D;
+    transition: all 0.2s ;
+    background: #FEFFDE;
+
+
+    :hover {
+    background: #a4ee34;
+    cursor:pointer;
+    }
+`;
 
 export default Controller;

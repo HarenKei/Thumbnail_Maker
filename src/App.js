@@ -7,17 +7,8 @@ import styled from 'styled-components';
 const App = () =>{
 return (
   <AppMainStyle>
-    <div id="divHeader">
       <Title/>
-    </div>
-
-    <div id="divDisplayCanvas">
       <Canvas/>
-
-    </div>
-    <div id="contrlotest">
-    </div>
-    
   </AppMainStyle> 
 )
 }
@@ -38,39 +29,13 @@ const AppMainStyle = styled.div`
     justify-content: center;
     font-size: calc(10px + 2vmin);
     font-family: 'Pretendard-Regular';
-
-    
+    height: 100%;
   
 
 
-
-
-button {
-  display: block;
-  position: relative;
-  float: left;
-  width: 180px;
-  padding: 0;
-  margin: 10px 20px 10px 0;
-  padding:10px 20px;
-  font-weight: 600;
-  text-align: center;
-  color: #2e2e2e;
-  border-radius: 10px;
-  border: 3px solid #52734D;
-  transition: all 0.2s ;
-  background: #FEFFDE;
-}
-
-
-button:hover {
-  background: #a4ee34;
-  cursor:pointer;
-}
-
 select{
   display : block;
-  width : 120px;
+  width : 200px;
   line-height: 40px;
   height : 40px;
 }
