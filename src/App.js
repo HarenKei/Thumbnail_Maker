@@ -15,11 +15,12 @@ return (
 
 const AppMainStyle = styled.div`
 
-  @font-face {
-    font-family: 'Pretendard-Regular';
-    font-weight: 400;
-    font-style: normal;
-  }
+    @font-face {
+      font-family: 'Pretendard-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
 
     background-color: #91C788;
     display: flex;
@@ -29,41 +30,5 @@ const AppMainStyle = styled.div`
     font-size: calc(10px + 2vmin);
     font-family: 'Pretendard-Regular';
     height: 100%;
- 
-
-
-
-#divTextInput input{
-  width : 580px;
-}
-
-#divCanvas{
-  display : flex;
-  margin:0 auto;
-  justify-content: center;
-  
-}
-
-#divCanvasAdjustment{
-  display: flex;
-  flex-direction: column;
-  margin-top : 50px;
-}
-
-#divTextAndSize{
-  display: flex;
-  flex-direction: row;
-  margin : 0, auto;
-  justify-content : center;
-  align-items: center;
-  color : black;
-}
-#divOterAdjustment{
-  display: flex;
-  flex-direction: row;
-  margin : 0, auto;
-  justify-content : center;
-  align-items: center;
-}
 `;
 export default App;

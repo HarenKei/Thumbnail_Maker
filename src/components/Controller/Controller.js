@@ -68,24 +68,22 @@ const Controller = forwardRef(({}, canvasRef) => {
 
     return(
         <div>
-            <div id = "divControllerWrap">
-                <div id = "divTextAndSize">
-                    <div id="divTextInput">
+            <ControllerMainStyle>
+                <TextAndSizeCtrlStyle>
                         <InputTextStyle
                             type = "text" 
                             placeholder = "썸네일 텍스트" 
                             value = { thumbText } 
                             onChange = { e=> dispatch(textInput(e.target.value)) } 
                         />
-                    </div> { /* End of divTextInput */ }
-
 
                         <CtrlButtonStyle
                             onClick = { onDownloadBtn }>
                             썸네일 저장
                         </CtrlButtonStyle>
-                </div>{/* End of divTextAndSize */}
-                <div id = "divOterAdjustment">
+                </TextAndSizeCtrlStyle>
+
+                <OtherCanvasCtrlStyle>
                     <div id = "divCanvasColor">
                         <CtrlButtonStyle
                             onClick = {()=>setShowCanvasButton(setShowCanvasButton => !setShowCanvasButton)}>
@@ -136,16 +134,41 @@ const Controller = forwardRef(({}, canvasRef) => {
                     </div>{/* End of divSelectSize*/}
 
 
-                </div>
+                </OtherCanvasCtrlStyle>
 
-            </div>
+            </ControllerMainStyle>
         </div>
 
     )
 
 });
 
+const ControllerMainStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top : 50px;
+`;
+
+const TextAndSizeCtrlStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin : 0, auto;
+    justify-content : center;
+    align-items: center;
+    color : black;
+
+`;
+
+const OtherCanvasCtrlStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin : 0, auto;
+    justify-content : center;
+    align-items: center;
+`;
+
 const InputTextStyle = styled.input`
+    width : 37em;
     display:block;
     background-color: #FEFFDE;
     color:#2e2e2e;
@@ -180,5 +203,4 @@ const CtrlButtonStyle = styled.button`
     cursor:pointer;
     }
 `;
-
 export default Controller;
