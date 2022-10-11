@@ -22,6 +22,8 @@ const AppMainStyle = styled.div`
       font-style: normal;
     }
 
+    width: 100%;
+    position: absolute;
     background-color: #91C788;
     display: flex;
     flex-direction: column;
@@ -29,6 +31,5 @@ const AppMainStyle = styled.div`
     justify-content: center;
     font-size: calc(10px + 2vmin);
     font-family: 'Pretendard-Regular';
-    height: 100%;
 `;
 export default App;

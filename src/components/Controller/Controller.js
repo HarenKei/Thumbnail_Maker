@@ -18,8 +18,10 @@ const Controller = forwardRef(({}, canvasRef) => {
     const customStyles = {
         control: (base, state) => ({
           ...base,
+          width: "6em",
+          margin : "10px 20px 10px 10px",
           background: "#FEFFDE",
-          color: "#91C788",
+          border: "#91C788",
           // Overwrittes the different states of border
           borderColor: state.isFocused ? "green" : "yellow",
           // Removes weird border around container
@@ -84,20 +86,20 @@ const Controller = forwardRef(({}, canvasRef) => {
                 </TextAndSizeCtrlStyle>
 
                 <OtherCanvasCtrlStyle>
-                    <div id = "divCanvasColor">
+                    <ButtonAndCPStyle>
                         <CtrlButtonStyle
                             onClick = {()=>setShowCanvasButton(setShowCanvasButton => !setShowCanvasButton)}>
                             {showCanvasButton ? '배경 색상 선택창 닫기' : '배경 색상 선택하기'}
                         </CtrlButtonStyle>
-                        {showCanvasButton && (<SketchPicker
+                        {showCanvasButton && (<BlockPicker
                                                     color={ cnvsColor }
                                                     onChangeComplete={ (color) => dispatch(chageCanvasColor((color.hex))) }/>
                                     
                             )
                         }
-                    </div> {/* End of divColorpicker */}
-
-                    <div id = "divTxtColor">
+                    </ButtonAndCPStyle>
+                        
+                    <ButtonAndCPStyle>
                         <CtrlButtonStyle
                         onClick = {()=> setShowTxtButton(setShowTxtButton=>!setShowTxtButton)}>
                         { showTxtButton? '폰트 색상 선택창 닫기' : '폰트 색상 선택하기' }
@@ -107,32 +109,26 @@ const Controller = forwardRef(({}, canvasRef) => {
                                                 onChangeComplete={ (color) => dispatch(textColorChagne(color.hex)) }/>
                             )
                         }
-                    </div> {/* End of divTxtColor */}
-
-                    <div id = "divCanvasSize">
-                        썸네일 사이즈
-                        <Select 
+                    </ButtonAndCPStyle>
+                        
+                        <Select
                            className = "canvasSize" 
                            options = { canvasSizePreset } 
                            value = { cnvsSize }
                            defaultValue = { cnvsSize[1] }
                            onChange = { (value) => dispatch(canvasSizing(value)) }
                            styles = {customStyles}
+                           
                         />
-                    </div>
-
-                    <div id = "divSelectSize">
-                        폰트 사이즈
-                        <Select 
+                        <Select
                           className = "fontSize" 
                           options = { fontSizePreset } 
                           value = { textSize }
                           defaultValue = { textSize[1] }
                           onChange = { (value) => dispatch(textSizing(value)) }
                           styles = {customStyles}
+                          
                         />
-                    </div>{/* End of divSelectSize*/}
-
 
                 </OtherCanvasCtrlStyle>
 
@@ -142,6 +138,16 @@ const Controller = forwardRef(({}, canvasRef) => {
     )
 
 });
+
+const SelectStyle = styled(Select)`
+    width: 6em;
+    margin-right: 20px;
+`;
+
+const ButtonAndCPStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const ControllerMainStyle = styled.div`
     display: flex;
@@ -185,7 +191,7 @@ const CtrlButtonStyle = styled.button`
     display: block;
     position: relative;
     float: left;
-    width: 180px;
+    width: 15em;
     padding: 0;
     margin: 10px 20px 10px 0;
     padding:10px 20px;
@@ -202,5 +208,6 @@ const CtrlButtonStyle = styled.button`
     background: #a4ee34;
     cursor:pointer;
     }
+    
 `;
 export default Controller;
