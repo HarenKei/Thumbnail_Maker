@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, forwardRef } from "react";
-import "./Canvas.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addThumbName } from "../../redux/thumbName";
 import Controller from "../Controller";
+import styled from "styled-components";
 
 
 
@@ -35,18 +35,25 @@ const Canvas = () => {
 
     return(
         <div>
-            <div id="divCanvas">
+            <CanvasMainStyle>
                 <canvas 
                     ref = { cnvsRef }
                     width = { cnvsSize.value[0] }
                     height = { cnvsSize.value[1] }
                 />
-            </div> {/* End of divCanvas */}
+            </CanvasMainStyle> {/* End of divCanvas */}
 
             <Controller ref = { cnvsRef }/>
         </div>
         
     )
 };
+
+const CanvasMainStyle = styled.div`
+    display : flex;
+    margin:0 auto;
+    justify-content: center;
+`;
+
 
 export default Canvas;
