@@ -1,6 +1,6 @@
-import React, { useState, useRef, forwardRef} from 'react';
+import React, { useState, useRef, forwardRef, useMemo} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SketchPicker, BlockPicker } from 'react-color';
+import { BlockPicker } from 'react-color';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import Select from 'react-select';
@@ -16,23 +16,21 @@ import styled from 'styled-components';
 const Controller = forwardRef(({}, canvasRef) => {
 
     const customStyles = {
-        control: (base, state) => ({
-          ...base,
-          width: "6em",
-          margin : "10px 20px 10px 10px",
-          background: "#FEFFDE",
-          border: "#91C788",
-          // Overwrittes the different states of border
-          borderColor: state.isFocused ? "green" : "yellow",
-          // Removes weird border around container
-          boxShadow: state.isFocused ? null : null,
-          "&:hover": {
-            // Overwrittes the different states of border
-            borderColor: state.isFocused ? "red" : "blue"
-          }
-        })
-      };
-
+        option: (provided, state) => ({
+          ...provided,
+          width:'6em',
+          borderBottom: '5px solid #52734D',
+          background: '#feffde',
+          color: state.isSelected ? '#fefede' : '#2e2e2e',
+          padding: 20,
+        }),
+        menu: () => ({
+            background : 'red'
+        }),
+        singleValue: (provided, state) => {
+        }
+      }
+      
     const fontSizePreset = [ 
         { label: "50px", value: "50px" },
         { label: "70px", value: "70px" },
@@ -112,21 +110,20 @@ const Controller = forwardRef(({}, canvasRef) => {
                     </ButtonAndCPStyle>
                         
                         <Select
-                           className = "canvasSize" 
                            options = { canvasSizePreset } 
                            value = { cnvsSize }
                            defaultValue = { cnvsSize[1] }
                            onChange = { (value) => dispatch(canvasSizing(value)) }
                            styles = {customStyles}
+                           placeholder = {cnvsSize[1]}
                            
                         />
                         <Select
-                          className = "fontSize" 
                           options = { fontSizePreset } 
                           value = { textSize }
                           defaultValue = { textSize[1] }
                           onChange = { (value) => dispatch(textSizing(value)) }
-                          styles = {customStyles}
+                          placeholder = {textSize[1]}
                           
                         />
 
@@ -139,10 +136,7 @@ const Controller = forwardRef(({}, canvasRef) => {
 
 });
 
-const SelectStyle = styled(Select)`
-    width: 6em;
-    margin-right: 20px;
-`;
+
 
 const ButtonAndCPStyle = styled.div`
     display: flex;
@@ -210,4 +204,6 @@ const CtrlButtonStyle = styled.button`
     }
     
 `;
+
+
 export default Controller;

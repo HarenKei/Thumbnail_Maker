@@ -23,13 +23,17 @@ const AppMainStyle = styled.div`
     }
 
     width: 100%;
+    height: 100%;
+
     position: absolute;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Pretendard-Regular';
     background-color: #91C788;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    font-family: 'Pretendard-Regular';
+   
 `;
 export default App;
